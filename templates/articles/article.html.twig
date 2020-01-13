@@ -6,6 +6,7 @@
     <h1>{{ article.artTitle }}</h1>
     <p>{{ article.artCreatedAt|date }} - Commentaires : {{ commentaires|length }}</p>
     <div>{{ article.artContent|raw }}</div>
+    <img src="{{ article.artImage }}" alt="image de l'article">
     <p>Catégories :
         {% for categorie in article.categories %}
             {{ categorie.catTitle }}
