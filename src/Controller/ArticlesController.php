@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
 use App\Entity\Comments;
+use App\Form\CommentsFormType;
 use Symfony\Component\HttpFoundation\Request; // Nous avons besoin d'accéder à la requête pour obtenir le numéro de page
 use Knp\Component\Pager\PaginatorInterface; // Nous appelons le bundle KNP Paginator
 
@@ -61,8 +62,23 @@ class ArticlesController extends AbstractController
             throw $this->createNotFoundException('L\'article n\'existe pas');
         }
 
+        //on instancie l'entité Comments qui va contenir les données du comentaire
+        $comment = new Comments();
+
+        //on crée l'objet formulaire avec les 3 parametres : type, les données, les options
+        $form = $this->createForm(CommentsFormType::class, $comment);
+
+
         // Si l'article existe nous envoyons les données à la vue
-        return $this->render('articles/article.html.twig', compact('article','commentaires'));
+//        return $this->render('articles/article.html.twig', compact('article','commentaires'));
+
+        // lorsque nous avons différentes valeurs à envoyer on utilise le tableau associatif de données et pas la méthode compact
+        return $this->render('articles/article.html.twig', [
+            'article' => $article,
+            'commentaires' => $commentaires,
+            'commentForm' => $form->createView()
+        ]);
+
     }
 
 }

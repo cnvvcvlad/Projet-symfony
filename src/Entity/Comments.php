@@ -60,7 +60,7 @@ class Comments
         return $this->id;
     }
 
-    public function getComContent(): string
+    public function getComContent(): ?string
     {
         return $this->com_content;
     }
@@ -97,7 +97,7 @@ class Comments
         return $this;
     }
 
-    public function getEmailAuthor(): string
+    public function getEmailAuthor(): ?string
     {
         return $this->email_author;
     }
