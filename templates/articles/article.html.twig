@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.artTitle }}{% endblock %}
+
+{% block body %}
+    <h1>{{ article.artTitle }}</h1>
+    <p>{{ article.artCreatedAt|date }} - Commentaires : {{ commentaires|length }}</p>
+    <div>{{ article.artContent|raw }}</div>
+    <p>Catégories :
+        {% for categorie in article.categories %}
+            {{ categorie.catTitle }}
+        {% endfor %}
+    </p>
+
+    <h2>Commentaires</h2>
+    {% for commentaire in commentaires %}
+        <p>Commentaire écrit par {{ commentaire.user.login }} le {{ commentaire.comCreatedAt|date }}</p>
+        <p>{{ commentaire.comContent }}</p>
+    {% else %}
+        <p>Il n'y a pas encore de commentaire, publiez le premier !</p>
+    {% endfor %}
+
+{% endblock %}

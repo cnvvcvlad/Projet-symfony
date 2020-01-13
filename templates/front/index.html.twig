@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Super Blog{% endblock %}
+
+{% block body %}
+    <h1>Mon Super Blog</h1>
+    <p>Ceci est la page d'accueil</p>
+    <a href=""> {{ variable }}</a>
+    {# Ce lien changera automatiquement en cas de modification des routes #}
+    <p><a href="{{ path('actualites_articles') }}">Liste des articles</a></p>
+{% endblock %}
