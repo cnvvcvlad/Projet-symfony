@@ -46,7 +46,7 @@ class ArticlesController extends AbstractController
     /**
      * @Route("/{slug}", name="article")
      */
-    public function showArticle($slug)
+    public function showArticle($slug, Request $request)
     {
         // On récupère l'article correspondant au slug
         $article = $this->getDoctrine()->getRepository(Articles::class)->findOneBy(['art_slug' => $slug]);
@@ -68,11 +68,30 @@ class ArticlesController extends AbstractController
         //on crée l'objet formulaire avec les 3 parametres : type, les données, les options
         $form = $this->createForm(CommentsFormType::class, $comment);
 
+        //on récupère les donnés saisies
+        $form->handleRequest($request);
+
+        //on vérifie si le formulaire a été envoyé et si les données sont valides
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Hydrate notre commentaire avec l'article
+            $comment->setArticle($article);
+            // Hydrate notre commentaire avec la date et l'heure courants
+            $comment->setComCreatedAt(new \DateTime('now'));
+            //on instancie Doctrine
+            $doctrine = $this->getDoctrine()->getManager();
+
+            // On hydrate notre instance $comment
+            $doctrine->persist($comment);
+
+            // On écrit en base de données
+            $doctrine->flush();
+        }
+
 
         // Si l'article existe nous envoyons les données à la vue
 //        return $this->render('articles/article.html.twig', compact('article','commentaires'));
 
-        // lorsque nous avons différentes valeurs à envoyer on utilise le tableau associatif de données et pas la méthode compact
+        // lorsque nous avons différentes valeurs à envoyer (en raison de l'ajout du "createView" pour le formulaire)  on utilise le tableau associatif de données et pas la méthode compact
         return $this->render('articles/article.html.twig', [
             'article' => $article,
             'commentaires' => $commentaires,

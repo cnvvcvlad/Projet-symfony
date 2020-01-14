@@ -134,7 +134,7 @@ class Comments
         return $this;
     }
 
-    public function getUser(): Users
+    public function getUser(): ?Users
     {
         return $this->user;
     }
