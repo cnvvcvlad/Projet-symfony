@@ -38,6 +38,12 @@ class MotsCles
         $this->articles = new ArrayCollection();
     }
 
+    //on utilise la méthode magique pour convertir les données en string
+    public  function __toString()
+    {
+        return $this->mot_cle;
+    }
+
     public function getId(): int
     {
         return $this->id;

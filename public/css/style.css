@@ -1,0 +1,11 @@
+.jumbotron {
+    background-color: rgba(0, 123, 157, 0.9);
+}
+
+a.nav-link {
+    color: yellowgreen;
+}
+
+a.nav-link:hover {
+    color: red;
+}

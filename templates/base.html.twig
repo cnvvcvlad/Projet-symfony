@@ -1,21 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}{{ title }}{% endblock %}</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-    {# Le block body sera dans un container bootstrap #}
-    <div class="container">
-        {% block body %}{% endblock %}
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<div class="jumbotron">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ path('accueil') }}">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Catégories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('actualites_articles') }}">Articles</a>
+        </li>
+        {% if app.user %} {#isConnected in PHP#}
+            <li class="nav-item">
+                <a class="nav-link" href="#">Mon Compte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Mes articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Créer article</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+        {% else %}
+        <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_login') }}">Connection</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+            </li>
+        {% endif %}
+
+
+    </ul>
+</div>
+{# Le block body sera dans un container bootstrap #}
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+<footer class="sticky-top">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Notre adresse</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Réseaux Sociaux</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('mentions-legales') }}">Mentions légales</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" target="_blank" href="https://chess.com">Chess.com</a>
+        </li>
+    </ul>
+    <div class="d-flex justify-content-center">
+        <p>&copy; Copyright 2019 </p>
+
     </div>
-        {% block javascripts %}
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        {% endblock %}
-    </body>
+
+</footer>
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/caroussel.js') }}"></script>
+{% endblock %}
+</body>
+
 </html>

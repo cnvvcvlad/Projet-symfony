@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
 use App\Entity\Comments;
 use App\Form\CommentsFormType;
+use App\Form\AddArticleFormType;
 use Symfony\Component\HttpFoundation\Request; // Nous avons besoin d'accéder à la requête pour obtenir le numéro de page
 use Knp\Component\Pager\PaginatorInterface; // Nous appelons le bundle KNP Paginator
 
@@ -19,8 +20,10 @@ use Knp\Component\Pager\PaginatorInterface; // Nous appelons le bundle KNP Pagin
 
 class ArticlesController extends AbstractController
 {
+
+
     /**
-     * @Route("/articles", name="articles")
+     * @Route("/", name="articles")
      */
     public function index(Request $request, PaginatorInterface $paginator)
     {
@@ -44,7 +47,29 @@ class ArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="article")
+     * @Route("/articles/new", name="ajout_article")
+     */
+    public function addArticle(Request $request)
+    {
+        //on instancie l'objet article
+        $article = new Articles();
+
+        //on crée l'objet formulaire avec les 3 parametres : type du formulaire, les données de l'objet, les options éventuelles
+        $form = $this->createForm(AddArticleFormType::class, $article);
+
+        //on récupère les donnés saisies
+//        $form->handleRequest($request);
+
+        //on renvoie le formulair avec les parametres à la vue
+        return $this->render('articles/add.html.twig', [
+            'articleForm' => $form->createView()
+        ]);
+
+    }
+
+
+    /**
+     * @Route("/articles/{slug}", name="article")
      */
     public function showArticle($slug, Request $request)
     {
@@ -99,5 +124,7 @@ class ArticlesController extends AbstractController
         ]);
 
     }
+
+
 
 }
