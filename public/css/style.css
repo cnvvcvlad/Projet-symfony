@@ -1,11 +1,153 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
 .jumbotron {
     background-color: rgba(0, 123, 157, 0.9);
 }
 
-a.nav-link {
+a.nav-link-nav {
     color: yellowgreen;
 }
 
-a.nav-link:hover {
+a.nav-link-nav:hover {
     color: red;
+}
+
+h1.test {
+    font-size: smaller;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/*footer*/
+
+footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.middle {
+    width: 100%;
+}
+
+#profile > div:nth-child(2) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#message > div:nth-child(2) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+#settings > div:nth-child(2) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1;
+    position: relative;
+    /*margin-top: 156px;*/
+    background-color: #333;
+    min-height: 62px;
+    color: cornsilk;
+    margin-bottom: 0;
+    padding: 0;
+
+}
+
+ul.nav {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-radius: 8px 8px 0 0;
+}
+
+
+
+ul li.nav-item {
+    border-top: 1px solid #2980b9;
+    overflow: hidden;
+}
+
+
+ul li.nav-item a.nav-link {
+    display: block;
+    padding: 10px 20px;
+    background: #34495e;
+    color: cornsilk;
+    position: relative;
+    text-decoration: none;
+}
+
+ul li.nav-item a.nav-link:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #34495e;
+    left: 20px;
+    bottom: -7px;
+    transform: rotate(45deg);
+}
+
+ul li.nav-item div.smenu {
+    background: #333;
+    overflow: hidden;
+    transition: max-height 0.3s;
+    max-height: 0;
+}
+
+ul li.nav-item div.smenu a {
+    display: block;
+    padding: 16px 26px;
+    color: cornsilk;
+    font-size: 14px;
+    margin: 4px 0;
+    position: relative;
+    text-decoration: none;
+}
+
+ul li.nav-item div.smenu a:before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    background: darkcyan;
+    left: 0;
+    top: 0;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+ul li.nav-item div.smenu a:hover:before {
+    opacity: 1;
+}
+
+ul li.nav-item:target ul li.nav-item div.smenu{
+    max-height: 10em;
 }

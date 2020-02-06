@@ -8,6 +8,7 @@
     <title>{% block title %}{{ title }}{% endblock %}</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 
     {% block stylesheets %}{% endblock %}
@@ -16,61 +17,71 @@
 <div class="jumbotron">
     <ul class="nav justify-content-center">
         <li class="nav-item">
-            <a class="nav-link active" href="{{ path('accueil') }}">Accueil</a>
+            <a class="nav-link-nav active" href="{{ path('accueil') }}">Accueil</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Catégories</a>
+            <a class="nav-link-nav" href="#">Catégories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('actualites_articles') }}">Articles</a>
+            <a class="nav-link-nav" href="{{ path('actualites_articles') }}">Articles</a>
         </li>
         {% if app.user %} {#isConnected in PHP#}
             <li class="nav-item">
-                <a class="nav-link" href="#">Mon Compte</a>
+                <a class="nav-link-nav" href="#">Mon Compte</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Mes articles</a>
+                <a class="nav-link-nav" href="#">Mes articles</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Créer article</a>
+                <a class="nav-link-nav" href="#">Créer article</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                <a class="nav-link-nav" href="{{ path('app_logout') }}">Déconnexion</a>
             </li>
         {% else %}
-        <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_login') }}">Connection</a>
+            <li class="nav-item">
+                <a class="nav-link-nav" href="{{ path('app_login') }}">Connection</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                <a class="nav-link-nav" href="{{ path('app_register') }}">Inscription</a>
             </li>
         {% endif %}
-
-
     </ul>
 </div>
+<h1 class="test">Bonjour, je vous rappelle que le site est en phase de test</h1>
+
 {# Le block body sera dans un container bootstrap #}
 <div class="container">
     {% block body %}{% endblock %}
 </div>
-<footer class="sticky-top">
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Notre adresse</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Réseaux Sociaux</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('mentions-legales') }}">Mentions légales</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://chess.com">Chess.com</a>
-        </li>
-    </ul>
-    <div class="d-flex justify-content-center">
-        <p>&copy; Copyright 2019 </p>
+<footer class="">
+    <div class="pied-page">
+        <div class="middle">
+            <ul class="nav flex-column">
+                <li class="nav-item" id="profile">
+                    <a class="nav-link active" href="#profile">Notre adresse</a>
 
+                    <div class="smenu">
+                        <h5>15 rue Général Faidherbe</h5>
+                        <h5>94130 Nogent sur Marne</h5>
+                        <h5>0783554817</h5>
+                        <h5>cnvvc_vlad@yahoo.fr</h5>
+                    </div>
+                </li>
+                <li class="nav-item" id="message">
+                    <a class="nav-link" href="#message">Réseaux Sociaux</a>
+                </li>
+                <li class="nav-item" id="settings">
+                    <a class="nav-link" href="{{ path('mentions-legales') }}">Mentions légales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://chess.com">Chess.com</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright d-flex justify-content-center">
+        <p>&copy; Copyright 2019 </p>
     </div>
 
 </footer>
