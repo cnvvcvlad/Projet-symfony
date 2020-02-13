@@ -38,8 +38,86 @@ footer {
     flex-direction: column;
 }
 
+.pied-page {
+    z-index: 2;
+}
+
 .middle {
     width: 100%;
+}
+
+ul.menu {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-radius: 8px 8px 0 0;
+}
+
+
+ul li.item {
+    border-top: 1px solid #2980b9;
+    overflow: hidden;
+}
+
+ul li a.btn {
+    display: block;
+    padding: 10px 20px;
+    background: #34495e;
+    color: cornsilk;
+    position: relative;
+    text-decoration: none;
+    border-radius: 0;
+    text-align: start;
+    /*flex: 1;*/
+}
+
+ul li a.btn:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #34495e;
+    left: 20px;
+    bottom: -7px;
+    transform: rotate(45deg);
+}
+
+ul li div.smenu {
+    background: #333;
+    overflow: hidden;
+    transition: max-height 0.4s;
+    max-height: 0;
+}
+
+
+ul li div.smenu a {
+    display: block;
+    padding: 16px 26px;
+    color: cornsilk;
+    font-size: 14px;
+    margin: 4px 0;
+    position: relative;
+    text-decoration: none;
+}
+
+ul li div.smenu a:before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    background: darkcyan;
+    left: 0;
+    top: 0;
+    transition: 0.4s;
+    opacity: 0;
+}
+
+ul li div.smenu a:hover:before {
+    opacity: 1;
+}
+
+.item:target .smenu {
+    max-height: 9em;
 }
 
 #profile > div:nth-child(2) {
@@ -65,6 +143,10 @@ footer {
 
 }
 
+ul li h5 {
+    color: darkgrey;
+}
+
 .copyright {
     display: flex;
     justify-content: center;
@@ -80,74 +162,25 @@ footer {
 
 }
 
-ul.nav {
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    border-radius: 8px 8px 0 0;
-}
 
 
 
-ul li.nav-item {
-    border-top: 1px solid #2980b9;
-    overflow: hidden;
-}
 
 
-ul li.nav-item a.nav-link {
-    display: block;
-    padding: 10px 20px;
-    background: #34495e;
-    color: cornsilk;
-    position: relative;
-    text-decoration: none;
-}
 
-ul li.nav-item a.nav-link:before {
-    content: "";
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    background: #34495e;
-    left: 20px;
-    bottom: -7px;
-    transform: rotate(45deg);
-}
 
-ul li.nav-item div.smenu {
-    background: #333;
-    overflow: hidden;
-    transition: max-height 0.3s;
-    max-height: 0;
-}
 
-ul li.nav-item div.smenu a {
-    display: block;
-    padding: 16px 26px;
-    color: cornsilk;
-    font-size: 14px;
-    margin: 4px 0;
-    position: relative;
-    text-decoration: none;
-}
 
-ul li.nav-item div.smenu a:before {
-    content: "";
-    position: absolute;
-    width: 6px;
-    height: 100%;
-    background: darkcyan;
-    left: 0;
-    top: 0;
-    transition: 0.3s;
-    opacity: 0;
-}
 
-ul li.nav-item div.smenu a:hover:before {
-    opacity: 1;
-}
 
-ul li.nav-item:target ul li.nav-item div.smenu{
-    max-height: 10em;
-}
+
+
+
+
+
+
+
+
+/*ul li.nav-item:target ul li.nav-item div.smenu{*/
+    /*max-height: 10em;*/
+/*}*/
