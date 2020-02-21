@@ -19,7 +19,7 @@ class FrontController extends AbstractController
 
     /**
      * @return mixed
-     * @Route("/mentions-legales", name="mentions-legales")
+     * @Route("/mentions_legales", name="mentions_legales")
      */
     public function mentionsLegales()
     {
@@ -37,5 +37,15 @@ class FrontController extends AbstractController
             'title' => 'Bienvenue sur la page d\'accueil de notre blog! On vous souhaite une agréable lecture!',
             'description' => 'Le blog du ChessTeam Nogent sur Marne propose aux internautes passionés des échecs  de consulter ses articles publiés, s\'inscrire en tant que membre pour publier ses propres articles et commentaires'
         ]);
+    }
+
+    public function conditions()
+    {
+        return $this->render('front/conditions.html.twig');
+    }
+
+    public function __invoke()
+    {
+        return $this->render('front/questions.html.twig');
     }
 }
