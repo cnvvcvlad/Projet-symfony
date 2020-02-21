@@ -41,6 +41,7 @@ class ArticlesController extends AbstractController
             6 // Nombre de résultats par page
         );
 
+
         return $this->render('articles/index.html.twig', [
             'articles' => $articles
         ]);
@@ -117,6 +118,8 @@ class ArticlesController extends AbstractController
 //        return $this->render('articles/article.html.twig', compact('article','commentaires'));
 
         // lorsque nous avons différentes valeurs à envoyer (en raison de l'ajout du "createView" pour le formulaire)  on utilise le tableau associatif de données et pas la méthode compact
+
+
         return $this->render('articles/article.html.twig', [
             'article' => $article,
             'commentaires' => $commentaires,

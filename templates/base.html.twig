@@ -49,6 +49,7 @@
     </ul>
 </div>
 <h1 class="test">Bonjour, je vous rappelle que le site est en phase de test</h1>
+<p class="d-flex justify-content-center">sssss@dd.ds/aaaaaaaaaa</p>
 
 {# Le block body sera dans un container bootstrap #}
 <div class="container">
@@ -84,16 +85,26 @@
                         <a href="{{ path('mentions_legales') }}">Mentions légales</a>
                     </div>
                 </li>
-                <li class="item">
-                    <a class="btn" target="_blank" href="https://chess.com">Chess.com</a>
-                </li>
+
+                {% if app.user %}
+                    <li class="item">
+                        <a class="btn" href="{{ path('app_logout') }}">Deconnexion</a>
+                    </li>
+
+                {% else %}
+                    <li class="item">
+                        <a class="btn" target="_blank" href="https://chess.com">Chess.com</a>
+                    </li>
+                {% endif %}
+
+
             </ul>
         </div>
     </div>
     <div class="copyright d-flex justify-content-center">
         <p>&copy; Copyright 2019 </p>
     </div>
-
++
 </footer>
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

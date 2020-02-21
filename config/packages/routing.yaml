@@ -1,3 +1,7 @@
 framework:
     router:
         utf8: true
+
+#creation d'un parametre de conteneur
+parameters:
+    app.author_project: 'Ciobanu Vladislav'
