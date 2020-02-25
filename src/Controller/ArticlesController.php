@@ -102,6 +102,8 @@ class ArticlesController extends AbstractController
         //on instancie l'entité Comments qui va contenir les données du comentaire
         $comment = new Comments();
 
+        $user = new Users();
+
         //on crée l'objet formulaire avec les 3 parametres : type, les données, les options
         $form = $this->createForm(CommentsFormType::class, $comment);
 
@@ -114,6 +116,14 @@ class ArticlesController extends AbstractController
             $comment->setArticle($article);
             // Hydrate notre commentaire avec la date et l'heure courants
             $comment->setComCreatedAt(new \DateTime('now'));
+
+            // Hydrate notre commentaire avec l'email de l'utilisateur conecté
+            $comment->setEmailAuthor($this->getUser()->getEmail($user));
+
+            // Hydrate notre commentaire avec l'id de l'auteur
+            $comment->setUser($this->getUser());
+
+
             //on instancie Doctrine
             $doctrine = $this->getDoctrine()->getManager();
 

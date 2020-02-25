@@ -25,8 +25,13 @@
 
     {% if app.user %}
         <h2>Ajouter un commentaire</h2>
-        {{ form(commentForm) }}
-
+        {#{{ form(commentForm) }}#}
+        {{ form_start(commentForm) }}
+        {#{{ form_row(commentForm.email_author) }}#}
+        {{ form_row(commentForm.com_content) }}
+        {{ form_row(commentForm.rgpd) }}
+        <p>{{ form_row(commentForm.Envoyer) }}</p>
+        {{ form_end(commentForm) }}
     {% else %}
         <h2>Vous ne pouvez pas commenter si vous n'êtes pas connecté</h2>
     {% endif %}

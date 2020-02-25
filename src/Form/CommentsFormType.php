@@ -18,11 +18,11 @@ class CommentsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email_author', EmailType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
+//            ->add('email_author', EmailType::class, [
+//                'attr' => [
+//                    'class' => 'form-control'
+//                ]
+//            ])
             ->add('com_content', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control'
