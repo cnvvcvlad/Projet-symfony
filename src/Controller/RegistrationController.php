@@ -31,6 +31,7 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
+            // on défini l'encodage du mot de passe
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -41,6 +42,7 @@ class RegistrationController extends AbstractController
             // On génère un token et on l'enregistre
             $user->setActivationToken(md5(uniqid()));
 
+            // on enregistre les informations dans la base de données pour l'utilisateur qui vient de s'inscrire
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -50,7 +52,7 @@ class RegistrationController extends AbstractController
             $message = (new \Swift_Message('Activation de votre compte'))
                 // on attribue l'expediteur, l'addrese specifique de notre site
                 ->setFrom('cnvvc_vlad@yahoo.fr')
-                // on attribue le destinaatire
+                // on attribue le destinataire
                 ->setTo($user->getEmail())
                 //on crée le contenu
                 ->setBody(

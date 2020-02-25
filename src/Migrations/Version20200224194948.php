@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200221180246 extends AbstractMigration
+final class Version20200224194948 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -24,7 +24,7 @@ final class Version20200221180246 extends AbstractMigration
 
 //        $this->addSql('ALTER TABLE categories CHANGE user_id user_id INT NOT NULL, CHANGE cat_slug cat_slug VARCHAR(40) NOT NULL');
 //        $this->addSql('ALTER TABLE comments CHANGE article_id article_id INT NOT NULL, CHANGE user_id user_id INT NOT NULL');
-//        $this->addSql('ALTER TABLE users CHANGE inscription_date_at inscription_date_at DATETIME NOT NULL');
+        $this->addSql('ALTER TABLE users ADD reset_token VARCHAR(50) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -34,6 +34,6 @@ final class Version20200221180246 extends AbstractMigration
 
         $this->addSql('ALTER TABLE categories CHANGE user_id user_id INT DEFAULT NULL, CHANGE cat_slug cat_slug VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('ALTER TABLE comments CHANGE article_id article_id INT DEFAULT NULL, CHANGE user_id user_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE users CHANGE inscription_date_at inscription_date_at DATETIME DEFAULT NULL');
+        $this->addSql('ALTER TABLE users DROP reset_token, CHANGE inscription_date_at inscription_date_at DATETIME DEFAULT NULL');
     }
 }

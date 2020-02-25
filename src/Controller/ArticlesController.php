@@ -59,9 +59,18 @@ class ArticlesController extends AbstractController
         $form = $this->createForm(AddArticleFormType::class, $article);
 
         //on récupère les donnés saisies
-//        $form->handleRequest($request);
+        $form->handleRequest($request);
 
-        //on renvoie le formulair avec les parametres à la vue
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            // on enregistre les informations dans la base de données pour l'article que vient d'etre créé
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+        }
+
+        //on renvoie le formulaire avec les parametres à la vue
         return $this->render('articles/add.html.twig', [
             'articleForm' => $form->createView()
         ]);

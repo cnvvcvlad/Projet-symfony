@@ -2,6 +2,20 @@
 
 {% block title %}Ajouter un article{% endblock %}
 
-{% blok body %}
+
+
+{% block body %}
+    <h1>Ajoutez un nouveau article</h1>
+
+    {{ form_start(articleForm) }}
+    {{ form_row(articleForm.art_title) }}
+    {{ form_row(articleForm.art_description) }}
+    {{ form_row(articleForm.art_content) }}
+    {{ form_row(articleForm.art_slug) }}
+    {{ form_row(articleForm.art_image) }}
+
+    <p class="d-flex justify-content-end"><button class="btn btn-lg btn-success">Ajouter</button></p>
+
+    {{ form_end(articleForm) }}
 
 {% endblock %}

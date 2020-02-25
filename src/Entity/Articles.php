@@ -86,60 +86,60 @@ class Articles
         return $this->id;
     }
 
-    public function getArtTitle(): string
+    public function getArtTitle(): ?string
     {
         return $this->art_title;
     }
 
-    public function setArtTitle(string $art_title): self
+    public function setArtTitle(?string $art_title): self
     {
         $this->art_title = $art_title;
 
         return $this;
     }
 
-    public function getArtSlug(): string
+    public function getArtSlug(): ?string
     {
         return $this->art_slug;
     }
 
-    public function setArtSlug(string $art_slug): self
+    public function setArtSlug(?string $art_slug): self
     {
         $this->art_slug = $art_slug;
 
         return $this;
     }
 
-    public function getArtDescription(): string
+    public function getArtDescription(): ?string
     {
         return $this->art_description;
     }
 
-    public function setArtDescription(string $art_description): self
+    public function setArtDescription(?string $art_description): self
     {
         $this->art_description = $art_description;
 
         return $this;
     }
 
-    public function getArtContent(): string
+    public function getArtContent(): ?string
     {
         return $this->art_content;
     }
 
-    public function setArtContent(string $art_content): self
+    public function setArtContent(?string $art_content): self
     {
         $this->art_content = $art_content;
 
         return $this;
     }
 
-    public function getArtImage(): string
+    public function getArtImage(): ?string
     {
         return $this->art_image;
     }
 
-    public function setArtImage(string $art_image): self
+    public function setArtImage(?string $art_image): self
     {
         $this->art_image = $art_image;
 
@@ -216,12 +216,12 @@ class Articles
     /**
      * @return Collection|MotsCles[]
      */
-    public function getMotsCles(): Collection
+    public function getMotsCles(): ?Collection
     {
         return $this->mots_cles;
     }
 
-    public function addMotsCle(MotsCles $motsCle): self
+    public function addMotsCle(?MotsCles $motsCle): self
     {
         if (!$this->mots_cles->contains($motsCle)) {
             $this->mots_cles[] = $motsCle;
@@ -230,7 +230,7 @@ class Articles
         return $this;
     }
 
-    public function removeMotsCle(MotsCles $motsCle): self
+    public function removeMotsCle(?MotsCles $motsCle): self
     {
         if ($this->mots_cles->contains($motsCle)) {
             $this->mots_cles->removeElement($motsCle);
