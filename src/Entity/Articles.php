@@ -146,12 +146,12 @@ class Articles
         return $this;
     }
 
-    public function getArtCreatedAt(): \DateTimeInterface
+    public function getArtCreatedAt(): ?\DateTimeInterface
     {
         return $this->art_created_at;
     }
 
-    public function setArtCreatedAt(\DateTimeInterface $art_created_at): self
+    public function setArtCreatedAt(?\DateTimeInterface $art_created_at): self
     {
         $this->art_created_at = $art_created_at;
 

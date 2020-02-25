@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
-
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 class AddArticleFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -61,7 +61,7 @@ class AddArticleFormType extends AbstractType
                     ])
                 ]
             ])
-//            ->add('art_created_at')
+//            ->add('art_created_at', DateType::class)
 //            ->add('art_updated_at')
 //            ->add('user')
 //            ->add('mots_cles', TextType::class, [

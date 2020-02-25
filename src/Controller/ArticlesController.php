@@ -63,6 +63,7 @@ class ArticlesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $article->setArtCreatedAt(new \DateTime());
 
             // on enregistre les informations dans la base de données pour l'article que vient d'etre créé
             $entityManager = $this->getDoctrine()->getManager();
