@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
+use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
@@ -64,6 +64,7 @@ class ArticlesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $article->setArtCreatedAt(new \DateTime());
+            $article->setUser($this->getUser());
 
             // on enregistre les informations dans la base de données pour l'article que vient d'etre créé
             $entityManager = $this->getDoctrine()->getManager();
