@@ -26,7 +26,8 @@ class CommentsFormType extends AbstractType
             ->add('com_content', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                    ]
+                    ],
+                'label' => 'Votre commentaire'
                 ])
 
             //            ->add('pseudo')
