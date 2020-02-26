@@ -11,5 +11,13 @@
     {% endfor %}
 
     <h1>Nous contacter</h1>
-    {{ form(contactForm) }}
+    {#{{ form(contactForm) }}#}
+
+    {{ form_start(contactForm) }}
+    {{ form_row(contactForm.nom) }}
+    {{ form_row(contactForm.email) }}
+    {{ form_row(contactForm.message) }}
+    <p><div class="d-flex justify-content-end">{{ form_row(contactForm.envoyer) }}</div></p>
+
+    {{ form_end(contactForm) }}
 {% endblock %}

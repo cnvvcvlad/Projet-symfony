@@ -30,6 +30,9 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $user->setInscriptionDateAt(new \DateTime());
+
             // encode the plain password
             // on défini l'encodage du mot de passe
             $user->setPassword(

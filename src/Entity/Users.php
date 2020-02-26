@@ -162,12 +162,12 @@ class Users implements UserInterface
 //         $this->plainPassword = null;
     }
 
-    public function getLogin(): string
+    public function getLogin(): ?string
     {
         return $this->login;
     }
 
-    public function setLogin(string $login): self
+    public function setLogin(?string $login): self
     {
         $this->login = $login;
 
