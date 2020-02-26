@@ -3,7 +3,7 @@
 {% block title %}Connexion blog ChessTeam{% endblock %}
 
 {% block body %}
-    {#On gère les messages flashes#}
+    {#On gï¿½re les messages flashes#}
     {% for message in app.flashes('message')%}
         <div class="alert alert-success" role="alert">
             {{ message }}
@@ -33,6 +33,7 @@
         {% endif %}
 
         <h1>Connectez - vous</h1>
+        <h6><a href="{{ path('app_forgotten_password') }}">Mot de passe oubliÃ© ?</a> </h6>
         <label for="inputEmail">Email</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required
                autofocus>
@@ -51,8 +52,8 @@
             <input type="checkbox" class="form-check-input" name="_remember_me">
             <label class="form-check-label">Se souvenir de moi</label>
         </div>
-        <button class="btn btn-lg btn-primary" type="submit">
+        <p><div class="d-flex justify-content-end"><button class="btn btn-lg btn-primary" type="submit">
             Sign in
-        </button>
+        </button></div></p>
     </form>
 {% endblock %}
