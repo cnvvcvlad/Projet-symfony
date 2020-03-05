@@ -17,13 +17,14 @@ use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterfac
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/inscription", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UsersAuthenticator $authenticator, \Swift_Mailer $mailer): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UsersAuthenticator $authenticator, \Swift_Mailer $mailer, TranslatorInterface $translator): Response
     {
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -79,8 +80,9 @@ class RegistrationController extends AbstractController
 //                'main' // firewall name in security.yaml
 //            );
 
+            $translated_message = $translator->trans('User successfully registered');
             // On génère un message pour la view
-            $this->addFlash('message', 'Utilisateur inscrit avec succés');
+            $this->addFlash('message', $translated_message);
 
             // On retourne au formulaire de connexion
             return $this->redirectToRoute('app_login');
@@ -95,15 +97,16 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/activation/{token}", name="activation")
      */
-    public function activation($token)
+    public function activation($token, TranslatorInterface $translator)
     {
         // On recherche si un utilisateur avec ce token existe dans la base de données
         $user = $this->getDoctrine()->getRepository(Users::class)->findOneBy(['activation_token' => $token]);
 
         // Si aucun utilisateur n'est associé à ce token
         if (!$user) {
+            $translated_message = $translator->trans('This user does not exist');
             // On renvoie une erreur 404
-            throw $this->createNotFoundException('Cet utilisateur n\'existe pas');
+            throw $this->createNotFoundException($translated_message);
         }
 
         // On supprime le token
@@ -112,8 +115,10 @@ class RegistrationController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
+
+        $translated_message = $translator->trans('User successfully activated');
         // On génère un message
-        $this->addFlash('message', 'Utilisateur activé avec succés');
+        $this->addFlash('message', $translated_message);
 
         // On retourne à l'accueil
         return $this->redirectToRoute('accueil');

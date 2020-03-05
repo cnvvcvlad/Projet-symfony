@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use App\Entity\Users;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SecurityController extends AbstractController
 {
@@ -44,7 +45,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/oubli-pass", name="app_forgotten_password")
      */
-    public function forgottenPass(Request $request, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator): Response
+    public function forgottenPass(Request $request, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator, TranslatorInterface $translator): Response
     {
         // On initialise le formulaire
         $form = $this->createForm(ResetPassType::class);
@@ -63,8 +64,11 @@ class SecurityController extends AbstractController
 
             // Si l'utilisateur n'existe pas (!$user)
             if ($user === null) {
+                // traduction de la chaine
+                $translated_message = $translator->trans('This email address is unknown');
+
                 // On envoie une alerte disant que l'adresse e-mail est inconnue
-                $this->addFlash('danger', 'Cette adresse e-mail est inconnue');
+                $this->addFlash('danger', $translated_message);
 
                 // On retourne sur la page de connexion
                 return $this->redirectToRoute('app_login');
@@ -82,7 +86,9 @@ class SecurityController extends AbstractController
 
                 // on gère l'erreur d'ecriture
             } catch (\Exception $e) {
-                $this->addFlash('warning', 'Une erreur est survenue : ' . $e->getMessage());
+                $translated_message = $translator->trans('An error has occurred : ');
+
+                $this->addFlash('warning', $translated_message . $e->getMessage());
                 return $this->redirectToRoute('app_login');
             }
 
@@ -103,7 +109,8 @@ class SecurityController extends AbstractController
             $mailer->send($message);
 
             // On crée le message flash de confirmation
-            $this->addFlash('message', 'E-mail de réinitialisation du mot de passe envoyé !');
+            $translated_message = $translator->trans('Password reset email sent !');
+            $this->addFlash('message', $translated_message);
 
             // On redirige vers la page de login
             return $this->redirectToRoute('app_login');
@@ -116,15 +123,17 @@ class SecurityController extends AbstractController
     /**
      * @Route("/reset_pass/{token}", name="app_reset_password")
      */
-    public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder)
+    public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder, TranslatorInterface $translator)
     {
         // On cherche un utilisateur avec le token donné
         $user = $this->getDoctrine()->getRepository(Users::class)->findOneBy(['reset_token' => $token]);
 
         // Si l'utilisateur n'existe pas
         if ($user === null) {
+
+            $translated_message = $translator->trans('Unknown Token');
             // On affiche une erreur
-            $this->addFlash('danger', 'Token Inconnu');
+            $this->addFlash('danger', $translated_message);
             return $this->redirectToRoute('app_login');
         }
 
@@ -141,8 +150,10 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+
+            $translated_message = $translator->trans('Password updated');
             // On crée le message flash
-            $this->addFlash('message', 'Mot de passe mis à jour');
+            $this->addFlash('message', $translated_message);
 
             // On redirige vers la page de connexion
             return $this->redirectToRoute('app_login');

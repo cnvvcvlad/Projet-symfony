@@ -6,13 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\ContactType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ContactController extends AbstractController
 {
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request, \Swift_Mailer $mailer)
+    public function index(Request $request, \Swift_Mailer $mailer, TranslatorInterface $translator)
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
@@ -39,8 +40,14 @@ class ContactController extends AbstractController
             // on envoie le message
             $mailer->send($message);
 
-            $this->addFlash('message', 'Votre message a été transmis, nous vous répondrons dans les meilleurs délais.');
-            // Permet un message flash de renvoyer
+            $translated_message = $translator->trans('Your message has been sent, we will respond to you as soon as possible.');
+
+                // Permet un message flash de renvoyer
+            $this->addFlash('message', $translated_message);
+
+//            $this->addFlash('message', 'Votre message a été transmis, nous vous répondrons dans les meilleurs délais.');
+
+
 
             return $this->redirectToRoute('accueil');
         }
