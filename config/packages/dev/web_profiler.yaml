@@ -1,6 +1,6 @@
 web_profiler:
     toolbar: true
-    intercept_redirects: true
+    intercept_redirects: false
 #    on a la possibilite d'intercepter les mails
 
 framework:

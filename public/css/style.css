@@ -22,6 +22,10 @@ a.nav-link-nav:hover {
     color: red;
 }
 
+.jumbotron ul li.list-group img.drapeau {
+    border-radius: 15px;
+}
+
 h1.test {
     font-size: smaller;
     display: flex;

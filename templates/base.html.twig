@@ -14,45 +14,59 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-<div class="jumbotron">
-    <ul class="nav justify-content-center">
+<div class="jumbotron d-flex justify-content-around ">
+    <ul class="nav justify-content-center ">
         <li class="nav-item">
-            <a class="nav-link-nav active" href="{{ path('accueil') }}">Accueil</a>
+            <a class="nav-link-nav active" href="{{ path('accueil') }}">{% trans %}Home{% endtrans %}</a>
         </li>
         <li class="nav-item">
             <a class="nav-link-nav" href="#">Catégories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link-nav" href="{{ path('actualites_articles') }}">Articles</a>
+            <a class="nav-link-nav" href="{{ path('actualites_articles') }}">{% trans %}All articles{% endtrans %}</a>
         </li>
 
         {% if app.user %} {#isConnected in PHP#}
             <li class="nav-item">
-                <a class="nav-link-nav" href="#">Mon Compte</a>
+                <a class="nav-link-nav" href="#">{% trans %}Profile{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link-nav" href="#">Mes articles</a>
+                <a class="nav-link-nav" href="#">{% trans %}My articles{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link-nav" href="{{ path('actualites_ajout_article') }}">Créer article</a>
+                <a class="nav-link-nav" href="{{ path('actualites_ajout_article') }}">{% trans %}Create
+                    article{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link-nav" href="{{ path('app_logout') }}">Déconnexion</a>
+                <a class="nav-link-nav" href="{{ path('app_logout') }}">{% trans %}Logout{% endtrans %}</a>
             </li>
         {% else %}
             <li class="nav-item">
-                <a class="nav-link-nav" href="{{ path('app_login') }}">Connection</a>
+                <a class="nav-link-nav" href="{{ path('app_login') }}">{% trans %}Log in{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link-nav" href="{{ path('app_register') }}">Inscription</a>
+                <a class="nav-link-nav" href="{{ path('app_register') }}">{% trans %}Registration{% endtrans %}</a>
             </li>
         {% endif %}
         <li class="nav-item">
-            <a class="nav-link-nav active" href="{{ path('contact') }}">Contact</a>
+            <a class="nav-link-nav active" href="{{ path('contact') }}">{% trans %}Contact us{% endtrans %}</a>
         </li>
     </ul>
+    <ul class="nav">
+        {% for locale in locales %}
+            {#on affiche tous les locales sauf celle qui est active#}
+            {% if locale != app.request.locale %}
+            <li class="list-group">
+                <a class="" href="{{ path('change_locale', {'locale' : locale}) }}"><img class="drapeau" src="{{ asset('img/'~locale~'.png') }}" alt="{{ locale }}"></a>
+            </li>
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+    {#{{ dump(locales) }}#}
 </div>
 <h1 class="test">Bonjour, je vous rappelle que le site est en phase de test</h1>
+
 <p class="d-flex justify-content-center">sssss@dd.ds/aaaaaaaaaa</p>
 {% for message in app.flashes('message') %}
     <div class="alert alert-success">
@@ -80,6 +94,7 @@
                 </li>
                 <li class="item" id="message">
                     <a class="btn" href="#message">Réseaux Sociaux</a>
+
                     <div class="smenu">
                         <a href="">Facebook<span class="icon-facebook"></span> </a>
                         <a href="">Twitter<span class="icon-twitter"></span> </a>
@@ -88,6 +103,7 @@
                 </li>
                 <li class="item" id="settings">
                     <a class="btn" href="#settings">FAQ/CGU</a>
+
                     <div class="smenu">
                         <a href="{{ path('questions') }}">Questions fréquentes</a>
                         <a href="{{ path('conditions') }}">Conditions d'utilisations</a>
@@ -108,6 +124,7 @@
 
 
             </ul>
+
         </div>
     </div>
     <div class="copyright d-flex justify-content-center">

@@ -10,7 +10,7 @@
     {% endfor %}
 
     <h1>{{ article.artTitle }}</h1>
-    <p>{% trans %}Published by {% endtrans %} {{ article.user.login|upper }} {% trans %} on {% endtrans %} {{ article.artCreatedAt|date('d/m/Y') ~ ' at '|trans ~ article.artCreatedAt|date('h\\hi') }} </p>
+    <p>{% trans %}Published by {% endtrans %} {{ article.user.login|upper }} {% trans %} on {% endtrans %} {{ article.artCreatedAt|date('d/m/Y')}} {% trans %}at{% endtrans %} {{ article.artCreatedAt|date('h\\hi') }} </p>
     <div>{{ article.artContent|raw }}</div>
     <img src="{{ article.artImage }}" alt="image de l'article">
     <p> {% trans %} Categories {% endtrans %} :
@@ -21,7 +21,7 @@
 
     <h3>{% trans %}Comments{% endtrans %} : {{ commentaires|length }}</h3>
     {% for commentaire in commentaires %}
-        <p>{% trans %}Comment written by{% endtrans %} {{ commentaire.user.login|upper }} {% trans %}on{% endtrans %} {{ commentaire.comCreatedAt|date('d/m/Y') ~ ' at '|trans ~ commentaire.comCreatedAt|date('h\\hi') }} </p>
+        <p>{% trans %}Comment written by{% endtrans %} {{ commentaire.user.login|upper }} {% trans %}on{% endtrans %} {{ commentaire.comCreatedAt|date('d/m/Y')}} {% trans %}at{% endtrans %} {{ commentaire.comCreatedAt|date('h\\hi') }} </p>
         <p>{{ commentaire.comContent }}</p>
     {% else %}
         <p>Il n'y a pas encore de commentaire, publiez le premier !</p>

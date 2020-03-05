@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="2lTOrMA" resname="Article published successfully">
+        <source>Article published successfully</source>
+        <target>Article publié avec succès</target>
+      </trans-unit>
+      <trans-unit id="FHKfqWU" resname="Your message has been sent, we will respond to you as soon as possible.">
+        <source>Your message has been sent, we will respond to you as soon as possible.</source>
+        <target>Votre message a été transmis, nous vous répondrons dans les meilleurs délais.</target>
+      </trans-unit>
+      <trans-unit id="RW_SoRT" resname="User successfully registered">
+        <source>User successfully registered</source>
+        <target>Utilisateur inscrit avec succés</target>
+      </trans-unit>
+      <trans-unit id="8rcU.G5" resname="This user does not exist">
+        <source>This user does not exist</source>
+        <target>Cet utilisateur n\'existe pas</target>
+      </trans-unit>
+      <trans-unit id="oUSgpCD" resname="User successfully activated">
+        <source>User successfully activated</source>
+        <target>Utilisateur activé avec succés</target>
+      </trans-unit>
+      <trans-unit id="hvnEQiq" resname="This email address is unknown">
+        <source>This email address is unknown</source>
+        <target>Cet adresse e-mail est inconnue</target>
+      </trans-unit>
+      <trans-unit id="YZRm9V_" resname="An error has occurred : ">
+        <source>An error has occurred : </source>
+        <target>Une erreur est survenue : </target>
+      </trans-unit>
+      <trans-unit id="PB0G6Ug" resname="Password reset email sent !">
+        <source>Password reset email sent !</source>
+        <target>E-mail de réinitialisation du mot de passe envoyé ! </target>
+      </trans-unit>
+      <trans-unit id="o9LTv_a" resname="Unknown Token">
+        <source>Unknown Token</source>
+        <target>Token inconnu !</target>
+      </trans-unit>
+      <trans-unit id="g2trm.R" resname="Password updated">
+        <source>Password updated</source>
+        <target>Mot de passe mis à jour !</target>
+      </trans-unit>
+      <trans-unit id="0iUhajp" resname="Published by">
+        <source>Published by</source>
+        <target>Publié par</target>
+      </trans-unit>
+      <trans-unit id="uNMehSc" resname="on">
+        <source>on</source>
+        <target>le</target>
+      </trans-unit>
+      <trans-unit id="sda5G2f" resname="at">
+        <source>at</source>
+        <target>à</target>
+      </trans-unit>
+      <trans-unit id="uLHYlMa" resname="Categories">
+        <source>Categories</source>
+        <target>Catégories</target>
+      </trans-unit>
+      <trans-unit id="NV958p1" resname="Comments">
+        <source>Comments</source>
+        <target>Commentaires</target>
+      </trans-unit>
+      <trans-unit id="VTCQX9q" resname="Comment written by">
+        <source>Comment written by</source>
+        <target>Commentaire écrit par</target>
+      </trans-unit>
+      <trans-unit id="tTGBpNh" resname="Profile">
+        <source>Profile</source>
+        <target>Profil</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="OHv.k8O" resname="All articles">
+        <source>All articles</source>
+        <target>Articles</target>
+      </trans-unit>
+      <trans-unit id="yvyBph4" resname="My articles">
+        <source>My articles</source>
+        <target>Mes articles</target>
+      </trans-unit>
+      <trans-unit id=".99O3EF" resname="Create article">
+        <source>Create article</source>
+        <target>Créer un article</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+      <trans-unit id="wYmEDPf" resname="Log in">
+        <source>Log in</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="x5Pg2aH" resname="Registration">
+        <source>Registration</source>
+        <target>Inscription</target>
+      </trans-unit>
+      <trans-unit id="R6rzG4P" resname="Contact us">
+        <source>Contact us</source>
+        <target>Contactez nous</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

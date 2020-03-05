@@ -5,5 +5,5 @@ framework:
 #    le chemin vers le dossier contenant la traduction
         default_path: '%kernel.project_dir%/translations'
 #        si jamais symfony ne trouve pas la traduction, on revient à l'anglais
-        fallbacks:
-            - en
+#        fallbacks:
+#            - en
