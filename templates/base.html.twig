@@ -26,16 +26,23 @@
             <a class="nav-link-nav" href="{{ path('actualites_articles') }}">{% trans %}All articles{% endtrans %}</a>
         </li>
 
-        {% if app.user %} {#isConnected in PHP#}
+        {% if is_granted('ROLE_USER') %} {#isConnected in PHP#}
             <li class="nav-item">
                 <a class="nav-link-nav" href="#">{% trans %}Profile{% endtrans %}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link-nav" href="#">{% trans %}My articles{% endtrans %}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link-nav" href="{{ path('actualites_ajout_article') }}">{% trans %}Create article{% endtrans %}</a>
-            </li>
+            {% if is_granted('ROLE_EDITOR') %}
+                <li class="nav-item">
+                    <a class="nav-link-nav" href="{{ path('actualites_ajout_article') }}">{% trans %}Create article{% endtrans %}</a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %} {#isAdmin in PHP#}
+                <li class="nav-item">
+                    <a class="nav-link-nav" href="{{ path('admin_utilisateurs') }}">{% trans %}Users{% endtrans %}</a>
+                </li>
+            {% endif %}
             <li class="nav-item">
                 <a class="nav-link-nav" href="{{ path('app_logout') }}">{% trans %}Logout{% endtrans %}</a>
             </li>
@@ -55,9 +62,11 @@
         {% for locale in locales %}
             {#on affiche tous les locales sauf celle qui est active#}
             {% if locale != app.request.locale %}
-            <li class="list-group">
-                <a class="" href="{{ path('change_locale', {'locale' : locale}) }}"><img class="drapeau" src="{{ asset('img/'~locale~'.png') }}" alt="{{ locale }}"></a>
-            </li>
+                <li class="list-group">
+                    <a class="" href="{{ path('change_locale', {'locale' : locale}) }}"><img class="drapeau"
+                                                                                             src="{{ asset('img/'~locale~'.png') }}"
+                                                                                             alt="{{ locale }}"></a>
+                </li>
             {% endif %}
         {% endfor %}
 

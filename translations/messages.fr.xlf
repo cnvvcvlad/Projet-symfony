@@ -113,6 +113,10 @@
         <source>User successfully changed</source>
         <target>Utilisateur modifié avec succès</target>
       </trans-unit>
+      <trans-unit id="awzJBNC" resname="Users">
+        <source>Users</source>
+        <target>Utilisateurs</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

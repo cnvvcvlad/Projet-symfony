@@ -30,6 +30,7 @@ class AdminController extends AbstractController
      */
     public function usersList(UsersRepository $users)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('admin/users.html.twig', [
             'users' => $users->findAll()
         ]);
