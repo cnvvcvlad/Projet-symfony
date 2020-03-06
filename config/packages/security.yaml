@@ -33,5 +33,16 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/profile, roles: ROLE_USER }
+
+    # La partie role_hierarchy contient la hiérarchie des rôles
+    # Un éditeur sera également utilisateur
+    # Un administrateur sera également éditeur et donc utilisateur
+    # Les autres rôles peuvent etre enregistrer ailleurs sans les indiquer dans ce fichier
+    role_hierarchy:
+        ROLE_EDITOR: ROLE_USER
+        ROLE_ADMIN: ROLE_EDITOR
+
+
+

@@ -86,24 +86,24 @@ class Articles
         return $this->id;
     }
 
-    public function getArtTitle(): string
+    public function getArtTitle(): ?string
     {
         return $this->art_title;
     }
 
-    public function setArtTitle(string $art_title): self
+    public function setArtTitle(?string $art_title): self
     {
         $this->art_title = $art_title;
 
         return $this;
     }
 
-    public function getArtSlug(): string
+    public function getArtSlug(): ?string
     {
         return $this->art_slug;
     }
 
-    public function setArtSlug(string $art_slug): self
+    public function setArtSlug(?string $art_slug): self
     {
         $this->art_slug = $art_slug;
 
