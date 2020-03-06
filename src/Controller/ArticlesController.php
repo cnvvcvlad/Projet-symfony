@@ -11,6 +11,7 @@ use App\Form\CommentsFormType;
 use App\Form\AddArticleFormType;
 use Symfony\Component\HttpFoundation\Request; // Nous avons besoin d'accéder à la requête pour obtenir le numéro de page
 use Knp\Component\Pager\PaginatorInterface; // Nous appelons le bundle KNP Paginator
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * Class ArticlesController
@@ -48,6 +49,7 @@ class ArticlesController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER") // seul les éditeurs et les personnes hierarchiquement plus haute (admins) peuvent accéder à cette route
      * @Route("/articles/new", name="ajout_article")
      */
     public function addArticle(Request $request)
