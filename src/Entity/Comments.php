@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentsRepository")
@@ -13,33 +15,39 @@ class Comments
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("article:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("article:read")
      */
     private $com_content;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("article:read")
      */
     private $actif = false;
 
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("article:read")
      */
     private $rgpd = false;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Groups("article:read")
      */
     private $email_author;
 
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("article:read")
      */
     private $com_created_at;
 
@@ -52,6 +60,7 @@ class Comments
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("article:read")
      */
     private $user;
 

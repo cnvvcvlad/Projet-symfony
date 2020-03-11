@@ -5,6 +5,9 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+// on utilise les containtes de validation
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticlesRepository")
@@ -15,52 +18,68 @@ class Articles
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("article:read")
      */
+
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("article:read")
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     * @Assert\Length(min=3)
      */
     private $art_title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("article:read")
      */
     private $art_slug;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("article:read")
      */
     private $art_description;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("article:read")
+     * on va surcharger le message en ecrivant le notre
+     * @Assert\NotBlank(message="Le contenu est obligatoire")
+     * @Assert\Length(min=3)
      */
     private $art_content;
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Groups("article:read")
      */
     private $art_image;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("article:read")
      */
     private $art_created_at;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups("article:read")
      */
     private $art_updated_at;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("article:read")
      */
     private $user;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="article", orphanRemoval=true)
+     * @Groups("article:read")
      */
     private $comments;
 
@@ -146,36 +165,36 @@ class Articles
         return $this;
     }
 
-    public function getArtCreatedAt(): \DateTimeInterface
+    public function getArtCreatedAt(): ?\DateTimeInterface
     {
         return $this->art_created_at;
     }
 
-    public function setArtCreatedAt(\DateTimeInterface $art_created_at): self
+    public function setArtCreatedAt(?\DateTimeInterface $art_created_at): self
     {
         $this->art_created_at = $art_created_at;
 
         return $this;
     }
 
-    public function getArtUpdatedAt(): \DateTimeInterface
+    public function getArtUpdatedAt(): ?\DateTimeInterface
     {
         return $this->art_updated_at;
     }
 
-    public function setArtUpdatedAt( \DateTimeInterface $art_updated_at): self
+    public function setArtUpdatedAt( ?\DateTimeInterface $art_updated_at): self
     {
         $this->art_updated_at = $art_updated_at;
 
         return $this;
     }
 
-    public function getUser(): Users
+    public function getUser(): ?Users
     {
         return $this->user;
     }
 
-    public function setUser(Users $user): self
+    public function setUser(?Users $user): self
     {
         $this->user = $user;
 

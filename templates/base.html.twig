@@ -35,7 +35,8 @@
             </li>
             {% if is_granted('ROLE_EDITOR') %}
                 <li class="nav-item">
-                    <a class="nav-link-nav" href="{{ path('actualites_ajout_article') }}">{% trans %}Create article{% endtrans %}</a>
+                    <a class="nav-link-nav" href="{{ path('actualites_ajout_article') }}">{% trans %}Create
+                        article{% endtrans %}</a>
                 </li>
             {% endif %}
             {% if is_granted('ROLE_ADMIN') %} {#isAdmin in PHP#}
@@ -63,9 +64,9 @@
             {#on affiche tous les locales sauf celle qui est active#}
             {% if locale != app.request.locale %}
                 <li class="list-group">
-                    <a class="" href="{{ path('change_locale', {'locale' : locale}) }}"><img class="drapeau"
-                                                                                             src="{{ asset('img/'~locale~'.png') }}"
-                                                                                             alt="{{ locale }}"></a>
+                    <a class="" href="{{ path('change_locale', {'locale' : locale}) }}">
+                        <img class="drapeau" src="{{ asset('img/'~locale~'.png') }}" alt="{{ locale }}">
+                    </a>
                 </li>
             {% endif %}
         {% endfor %}

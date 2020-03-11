@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
@@ -18,16 +20,19 @@ class Users implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("article:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups("article:read")
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups("article:read")
      */
     private $roles = [];
 
@@ -174,24 +179,24 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getUserImage(): string
+    public function getUserImage(): ?string
     {
         return $this->user_image;
     }
 
-    public function setUserImage(string $user_image): self
+    public function setUserImage(?string $user_image): self
     {
         $this->user_image = $user_image;
 
         return $this;
     }
 
-    public function getInscriptionDateAt(): \DateTimeInterface
+    public function getInscriptionDateAt(): ?\DateTimeInterface
     {
         return $this->inscription_date_at;
     }
 
-    public function setInscriptionDateAt(\DateTimeInterface $inscription_date_at): self
+    public function setInscriptionDateAt(?\DateTimeInterface $inscription_date_at): self
     {
         $this->inscription_date_at = $inscription_date_at;
 
@@ -291,12 +296,12 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getActivationToken(): string
+    public function getActivationToken(): ?string
     {
         return $this->activation_token;
     }
 
-    public function setActivationToken(string $activation_token): self
+    public function setActivationToken(?string $activation_token): self
     {
         $this->activation_token = $activation_token;
 
