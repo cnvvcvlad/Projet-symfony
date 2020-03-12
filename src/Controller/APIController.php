@@ -81,7 +81,7 @@ class APIController extends AbstractController
             $entityManager->persist($article);
             $entityManager->flush();
 
-            dd($article);
+//            dd($article);
 
             return $this->json($article, 201, [], ['groups' => 'post:read']);
         } catch (NotEncodableValueException $e) {

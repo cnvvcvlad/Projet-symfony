@@ -3,6 +3,7 @@ html {
 }
 
 body {
+    background-image: url("../img/by_default/bg1.png");
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -26,12 +27,19 @@ a.nav-link-nav:hover {
     border-radius: 15px;
 }
 
+.banniere {
+    background: url("../img/by_default/banner.jpg") repeat;
+    box-shadow: 0 4px 4px black;
+    border-radius: 10px 10px 10px 10px;
+}
+
 h1.test {
     font-size: smaller;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 
 
 
