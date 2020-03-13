@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+    <h1>Liste des catégories</h1>
+
+    {#{{ dump(categories) }}#}
+    {% for category in categories %}
+        <h2><a href="#">{{ category.catTitle }}</a></h2>
+        <div>{{ category.catDescription }}</div>
+    {% endfor %}
+
+    {{ knp_pagination_render(categories) }}
+{% endblock %}
