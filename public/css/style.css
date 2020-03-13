@@ -31,6 +31,7 @@ a.nav-link-nav:hover {
     background: url("../img/by_default/banner.jpg") repeat;
     box-shadow: 0 4px 4px black;
     border-radius: 10px 10px 10px 10px;
+    margin-top: -33px;
 }
 
 h1.test {
@@ -38,6 +39,14 @@ h1.test {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+
+/* Element | http://localhost:8000/actualites/articles/new */
+
+#add_article_form_categories > label:nth-child(2n) {
+    margin-left: -2em;
 }
 
 

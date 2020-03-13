@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\MotsCles;
 use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -56,6 +57,8 @@ class ArticlesController extends AbstractController
     {
         //on instancie l'objet article
         $article = new Articles();
+        //on instancie l'objet mot cle
+        $mot_cle = new MotsCles();
 
         //on crée l'objet formulaire avec les 3 parametres : type du formulaire, les données de l'objet, les options éventuelles
         $form = $this->createForm(AddArticleFormType::class, $article);
@@ -64,7 +67,8 @@ class ArticlesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $mot_cle->setMotCle($request);
+            $mot_cle->setMotCleSlug($request);
             $article->setArtCreatedAt(new \DateTime());
             $article->setUser($this->getUser());
 

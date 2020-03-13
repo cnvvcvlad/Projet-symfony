@@ -8,10 +8,12 @@
     <h1>Ajoutez un nouveau article</h1>
 
     {{ form_start(articleForm) }}
+    {{ form_row(articleForm.categories) }}
     {{ form_row(articleForm.art_title) }}
     {{ form_row(articleForm.art_description) }}
     {{ form_row(articleForm.art_content) }}
     {{ form_row(articleForm.art_slug) }}
+    {{ form_row(articleForm.mots_cles) }}
     {{ form_row(articleForm.art_image) }}
 
 

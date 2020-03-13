@@ -60,9 +60,17 @@ class Categories
      */
     private $user;
 
+
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+    }
+
+    //on utilise la méthode magique pour convertir les données en string
+    public function __toString()
+    {
+        return $this->cat_title;
     }
 
     public function getId(): int
@@ -180,6 +188,18 @@ class Categories
     public function setUser(Users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?string $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

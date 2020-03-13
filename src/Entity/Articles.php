@@ -261,12 +261,12 @@ class Articles
     /**
      * @return Collection|Categories[]
      */
-    public function getCategories(): Collection
+    public function getCategories(): ?Collection
     {
         return $this->categories;
     }
 
-    public function addCategory(Categories $category): self
+    public function addCategory(?Categories $category): self
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
