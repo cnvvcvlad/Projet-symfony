@@ -2,22 +2,26 @@
 
 namespace App\Controller;
 
+use App\Entity\Articles;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 class FrontController extends AbstractController
 {
     /**
      * @Route("/", name="accueil")
      */
-    public function index()
+    public function index(Request $request)
     {
+        $articles = $this->getDoctrine()->getRepository(Articles::class)->findBy([], ['art_created_at' => 'asc'], 5);
+
         return $this->render('front/index.html.twig', [
-            'variable' => 'C\'est une variable cliquable'
+            'articles' => $articles
         ]);
     }
+
+    
 
     /**
      * @Route("/change_locale/{locale}", name="change_locale")

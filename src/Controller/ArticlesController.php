@@ -8,11 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
 use App\Entity\Comments;
+use App\Entity\PostLike;
 use App\Form\CommentsFormType;
 use App\Form\AddArticleFormType;
 use Symfony\Component\HttpFoundation\Request; // Nous avons besoin d'accéder à la requête pour obtenir le numéro de page
 use Knp\Component\Pager\PaginatorInterface; // Nous appelons le bundle KNP Paginator
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+// use Doctrine\Common\Persistence\ObjectManager;
+use App\Repository\PostLikeRepository;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ArticlesController
@@ -82,7 +86,6 @@ class ArticlesController extends AbstractController
         return $this->render('articles/add.html.twig', [
             'articleForm' => $form->createView()
         ]);
-
     }
 
 
@@ -98,9 +101,9 @@ class ArticlesController extends AbstractController
         $commentaires = $this->getDoctrine()->getRepository(Comments::class)->findBy([
             'article' => $article,
             'actif' => 1
-        ],['com_created_at' => 'desc']);
+        ], ['com_created_at' => 'desc']);
 
-        if(!$article){
+        if (!$article) {
             // Si aucun article n'est trouvé, nous créons une exception
             throw $this->createNotFoundException('L\'article n\'existe pas');
         }
@@ -152,9 +155,62 @@ class ArticlesController extends AbstractController
             'commentaires' => $commentaires,
             'commentForm' => $form->createView()
         ]);
-
     }
 
 
+    /**
+     * Permet de liker ou unliker un article
+     *
+     * @Route("/articles/{id}/like", name="post_like")
+     *
+     * @param Articles $article
+     * @param PostLikeRepository $postLikeRepo
+     * @return Response
+     */
+    public function like(Articles $article, PostLikeRepository $postLikeRepo) : Response
+    {
+        $user = $this->getUser();
 
+        // 1 cas : user nonconecté
+        if (!$user) {
+            return $this->json([
+            'code' => 403,
+            'message' => 'Unauthorized'
+        ], 403);
+        }
+        // si le code ne s'arrete pas la on continue
+
+        // 2 cas : user qui supprime son like
+        if ($article->isLikedByUser($user)) {
+            $like = $postLikeRepo->findOneBy([
+                'article' => $article,
+                'user' => $user
+            ]);
+
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($like);
+            $entityManager->flush();
+
+            return $this->json([
+            'code' => 200,
+            'message' => 'Like bien supprimé',
+            'likes' => $postLikeRepo->count(['article' => $article])
+        ], 200); // le 2-eme 200 est important pour http
+        }
+
+        // 3 cas : user donne un like
+        $like = new PostLike();
+        $like->setArticle($article)
+            ->setUser($user);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($like);
+        $entityManager->flush();
+
+        return $this->json([
+                'code' => 200,
+                'message' => 'Like bien ajouté',
+                'likes' => $postLikeRepo->count(['article' => $article])
+            ], 200);
+    }
 }

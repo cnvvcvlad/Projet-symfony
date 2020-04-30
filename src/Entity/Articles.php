@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Users;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -93,11 +94,17 @@ class Articles
      */
     private $categories;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\PostLike", mappedBy="article")
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->mots_cles = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): int
@@ -182,7 +189,7 @@ class Articles
         return $this->art_updated_at;
     }
 
-    public function setArtUpdatedAt( ?\DateTimeInterface $art_updated_at): self
+    public function setArtUpdatedAt(?\DateTimeInterface $art_updated_at): self
     {
         $this->art_updated_at = $art_updated_at;
 
@@ -282,5 +289,52 @@ class Articles
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|PostLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(PostLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(PostLike $like): self
+    {
+        if ($this->likes->contains($like)) {
+            $this->likes->removeElement($like);
+            // set the owning side to null (unless already changed)
+            if ($like->getArticle() === $this) {
+                $like->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Permet de savoir si cet article est liké par un utilisateur
+     *
+     * @param Users $user
+     * @return boolean
+     */
+    public function isLikedByUser(Users $user) : bool
+    {
+        foreach ($this->likes as $like) {
+            if ($like->getUser() === $user) {
+                return true;
+            }
+        }
+        return false;
     }
 }

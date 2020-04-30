@@ -3,16 +3,85 @@
 {% block title %}Accueil blog ChessTeam{% endblock %}
 
 {% block body %}
-    <h1>Mon Super Blog</h1>
-    <p>Ceci est la page d'accueil</p>
-    <a href=""> {{ variable }}</a>
-    {# Ce lien changera automatiquement en cas de modification des routes #}
-    <p><a href="{{ path('actualites_articles') }}">Liste des articles</a></p>
-    <p>
-        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut id accusamus tempore, quibusdam excepturi expedita ad repudiandae ea! Reiciendis, nemo. Ea dicta voluptatibus molestias reiciendis tempore provident voluptas rerum laudantium?</span>
-        <span>Perspiciatis nam, vel commodi nihil voluptates quaerat quae modi voluptatibus earum mollitia veniam, assumenda minima voluptas ipsum nisi numquam neque pariatur, laudantium optio excepturi libero accusantium totam! Aut, consectetur sapiente!</span>
-        <span>Voluptatibus iure distinctio sapiente cumque a illo est natus minima dolor amet, reprehenderit commodi, suscipit eos odio consequatur, dicta ipsam enim asperiores totam illum beatae magnam. Doloremque quidem ab quisquam?</span>
-        <span>Expedita a doloribus laudantium cumque quo quaerat accusamus saepe ducimus recusandae est sunt dolor, labore quis possimus quod sapiente consequatur suscipit aperiam ullam fugiat minus adipisci eveniet? Quis, earum vel?</span>
-        <span>Ut ex sequi consectetur enim dolore voluptate consequuntur accusamus! Iure debitis amet numquam! Nesciunt quaerat dolores tempora aliquid quasi sequi molestiae illum unde, earum ea magnam voluptates minima ab eos?</span>
-    </p>
+<h1 class="d-flex justify-content-center">Mon Super Blog</h1>
+<p class="d-flex justify-content-center">Bienvenue sur la page d'accueil de notre blog! On vous souhaite une agréable
+    lecture!</p>
+<div class="d-flex justify-content-center flex-wrap">
+    {% for article in articles %}
+    <div class="col-lg-3 col-md-4 col-sm-9 d-flex flex-column justify-content-between"
+        style="border: solid 1px; margin: 20px; min-height: 250px;">
+        <h2>{{article.artTitle}}</h2>
+        <p>{{article.artDescription}}</p>
+        <div class="d-flex">
+            <a class="btn btn-success btn-sm" style="width: 100px; margin-bottom: 10px;" href="#">Lire la suite</a>
+            <a href="{{ path('actualites_post_like', {'id':article.id}) }}" class="btn btn-link js-like">
+                {% if app.user and article.isLikedByUser(app.user) %}
+                <i class="fas fa-thumbs-up"></i>
+                {% else %}
+                <i class="far fa-thumbs-up"></i>
+                {% endif %}
+                <span class="js-label like">J'aime</span>
+                <span class="js-likes">{{ article.likes | length }}</span>
+            </a>
+        </div>
+    </div>
+
+
+    {% endfor %}
+</div>
+
+
+{# Ce lien changera automatiquement en cas de modification des routes #}
+<p><a href="{{ path('actualites_articles') }}">Liste de tous les articles</a></p>
+<p>
+    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut id accusamus tempore, quibusdam excepturi
+        expedita ad repudiandae ea! Reiciendis, nemo. Ea dicta voluptatibus molestias reiciendis tempore provident
+        voluptas rerum laudantium?</span>
+</p>
+{% endblock %}
+
+{# on charge le block js en dehors de body #}
+{% block javascripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function onclickBtnLike(event) {
+        event.preventDefault();  // on arrete la recharge de la page lorsqu'on clique dessus
+
+        const url = this.href; // on recupere le href du a qu'on a cliqué
+        const spanCout = this.querySelector('span.js-likes');
+        const icone = this.querySelector('i');
+        // const labels = this.querySelector('span.js-label');
+        // console.log(labels);
+
+
+        // a mettre methode post
+        // axios c'est un gestionnaire de promesse
+        axios.get(url).then(function (response) {
+            spanCout.textContent = response.data.likes;
+            if (icone.classList.contains('fas')) {
+                icone.classList.replace('fas', 'far');
+            } else {
+                icone.classList.replace('far', 'fas');
+            }
+
+            // if (labels.classList.contains('nolike')) {
+            //     labels.innerHTML = "Je n'aime plus";
+            // } else {
+            //     labels.innerHTML = "J'aime";
+            // }
+
+
+        }).catch(function (error) {
+            if (error.response.status === 403) {
+                window.alert('Vous ne pouvez pas liker un article.');
+            } else {
+                window.alert('Erreur');
+            }
+        });
+    }
+
+    document.querySelectorAll('a.js-like').forEach(function (link) {
+        link.addEventListener('click', onclickBtnLike);
+    });
+</script>
 {% endblock %}
