@@ -13,14 +13,15 @@
         <h2>{{article.artTitle}}</h2>
         <p>{{article.artDescription}}</p>
         <div class="d-flex">
-            <a class="btn btn-success btn-sm" style="width: 100px; margin-bottom: 10px;" href="#">Lire la suite</a>
+            <a class="btn btn-success btn-sm" style="width: 90px; margin-bottom: 10px; max-height: 45px;" href="#">Lire la suite</a>
             <a href="{{ path('actualites_post_like', {'id':article.id}) }}" class="btn btn-link js-like">
                 {% if app.user and article.isLikedByUser(app.user) %}
                 <i class="fas fa-thumbs-up"></i>
+                    <span class="js-label like">Je n'aime plus</span>
                 {% else %}
                 <i class="far fa-thumbs-up"></i>
+                    <span class="js-label like">J'aime</span>
                 {% endif %}
-                <span class="js-label like">J'aime</span>
                 <span class="js-likes">{{ article.likes | length }}</span>
             </a>
         </div>
@@ -50,8 +51,8 @@
         const url = this.href; // on recupere le href du a qu'on a cliqué
         const spanCout = this.querySelector('span.js-likes');
         const icone = this.querySelector('i');
-        // const labels = this.querySelector('span.js-label');
-        // console.log(labels);
+        const labels = this.querySelector('span.like');
+//         console.log(labels);
 
 
         // a mettre methode post
@@ -60,15 +61,12 @@
             spanCout.textContent = response.data.likes;
             if (icone.classList.contains('fas')) {
                 icone.classList.replace('fas', 'far');
+                labels.innerHTML = 'J\'aime';
             } else {
                 icone.classList.replace('far', 'fas');
+                labels.innerHTML = 'Je n\'aime plus';
             }
 
-            // if (labels.classList.contains('nolike')) {
-            //     labels.innerHTML = "Je n'aime plus";
-            // } else {
-            //     labels.innerHTML = "J'aime";
-            // }
 
 
         }).catch(function (error) {
