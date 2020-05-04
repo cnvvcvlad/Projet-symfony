@@ -8,12 +8,20 @@
     lecture!</p>
 <div class="d-flex justify-content-center flex-wrap">
     {% for article in articles %}
-    <div class="col-lg-3 col-md-4 col-sm-9 d-flex flex-column justify-content-between"
+    <div class="col-lg-3 col-md-5 col-sm-9 d-flex flex-column justify-content-between"
         style="border: solid 1px; margin: 20px; min-height: 250px;">
         <h2>{{article.artTitle}}</h2>
         <p>{{article.artDescription}}</p>
-        <div class="d-flex">
-            <a class="btn btn-success btn-sm" style="width: 90px; margin-bottom: 10px; max-height: 45px;" href="#">Lire la suite</a>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="d-flex justify-content-center align-items-center read "
+                 style="flex: 1;">
+            <a class="btn btn-success btn-sm"
+               style="width: 90px; margin-bottom: 10px; max-height: 45px;"
+               href="#">Lire la suite
+            </a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center liked"
+                 style="flex: 1; min-height: 90px;">
             <a href="{{ path('actualites_post_like', {'id':article.id}) }}" class="btn btn-link js-like">
                 {% if app.user and article.isLikedByUser(app.user) %}
                 <i class="fas fa-thumbs-up"></i>
@@ -24,6 +32,7 @@
                 {% endif %}
                 <span class="js-likes">{{ article.likes | length }}</span>
             </a>
+            </div>
         </div>
     </div>
 
