@@ -27,6 +27,10 @@ a.nav-link-nav:hover {
     border-radius: 15px;
 }
 
+.card-img{
+    max-width: 8rem;
+}
+
 .banniere {
     background: url("../img/by_default/banner.jpg") repeat;
     box-shadow: 0 4px 4px black;
@@ -183,7 +187,33 @@ ul li h5 {
 
 }
 
+@media all and (max-width: 1024px){
 
+
+    .card-img-top {
+        max-height: 60px !important;
+        width: auto !important;
+    }
+
+    .jumbotron {
+        max-height: 190px !important;
+        /*padding-left: 50px !important;*/
+
+    }
+
+    .card-img {
+        max-width: 70px !important;
+    }
+
+    .card {
+        margin-left: 60px;
+    }
+
+
+
+
+
+}
 
 
 
