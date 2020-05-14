@@ -67,7 +67,11 @@ class AddArticleFormType extends AbstractType
                     'class' => 'form-control'
 
                 ],
+                // make it optional so you don't have to re-upload the file
+                // every time you edit the Article details
                 'required' => false,
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
                 'label' => 'Téléchargez une image',
                 'constraints' => [
                     new File([

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\MotsCles;
 use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
 use App\Entity\Comments;
@@ -17,6 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 // use Doctrine\Common\Persistence\ObjectManager;
 use App\Repository\PostLikeRepository;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * Class ArticlesController
@@ -57,7 +59,7 @@ class ArticlesController extends AbstractController
      * @IsGranted("ROLE_USER") // seul les éditeurs et les personnes hierarchiquement plus haute (admins) peuvent accéder à cette route
      * @Route("/articles/new", name="ajout_article")
      */
-    public function addArticle(Request $request)
+    public function addArticle(Request $request, SluggerInterface $slugger)
     {
         //on instancie l'objet article
         $article = new Articles();
@@ -76,10 +78,44 @@ class ArticlesController extends AbstractController
             $article->setArtCreatedAt(new \DateTime());
             $article->setUser($this->getUser());
 
+            $uploadFile = $form->get('art_image')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the file must be processed only when a file is uploaded
+            if ($uploadFile) {
+                $originalFilename = pathinfo($uploadFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$uploadFile->guessExtension();
+//dd($newFilename);
+                // Move the file to the directory where brochures are stored
+                try {
+                    $uploadFile->move(
+                        $this->getParameter('upload_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                    error_log($e->getMessage('Erreur ! Veuillez réessayer'));
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $article->setArtImage($newFilename);
+            }
+
+            // ... persist the $product variable or any other work
+
+
+
             // on enregistre les informations dans la base de données pour l'article que vient d'etre créé
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
+
+            $this->addFlash('message', 'Article Created! Knowledge is power!');
+
+            return $this->redirectToRoute('accueil');
         }
 
         //on renvoie le formulaire avec les parametres à la vue
