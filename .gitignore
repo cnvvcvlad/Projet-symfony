@@ -16,6 +16,12 @@
 ###< symfony/phpunit-bridge ###
 
 ###> symfony/webpack-encore-bundle ###
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
+/.idea/Projet-symfony.iml
 /node_modules/
 /public/build/
 npm-debug.log
