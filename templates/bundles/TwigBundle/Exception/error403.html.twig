@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accés interdit{% endblock %}
+
+{% block body %}
+<h1>Accés interdit</h1>
+<p>Vous n'avez pas la permission de voir cette page</p>
+<p>Message personnalisé : {{ exception.message }}</p>
+<a href="{{ path('accueil') }}">Retour à l'accueil</a>
+{# {{ dump() }} #}
+{% endblock %}
