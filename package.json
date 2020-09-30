@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.28.2",
+        "@symfony/webpack-encore": "^0.31.0",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
         "webpack-notifier": "^1.6.0"
@@ -14,6 +14,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "lodash": "^4.17.19"
+        "lodash": "^4.17.19",
+        "node-forge": "^0.10.0"
     }
 }

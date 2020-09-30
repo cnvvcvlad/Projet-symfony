@@ -87,7 +87,6 @@ class ArticlesController extends AbstractController
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$uploadFile->guessExtension();
-//dd($newFilename);
                 // Move the file to the directory where brochures are stored
                 try {
                     $uploadFile->move(
