@@ -43,7 +43,9 @@
     },
     "config": {
         "preferred-install": {
-            "*": "dist"
+            "*": "dist",
+            "disable-tls": true,
+            "secure-http": false
         },
         "sort-packages": true
     },
@@ -84,7 +86,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.0.*"
+            "require": "5.1.*"
         }
     }
 }
