@@ -5,6 +5,42 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
+      <trans-unit id="aWhr3oB" resname="Please download the correct format">
+        <source>Please download the correct format</source>
+        <target>Veuillez télécharger le bon format</target>
+      </trans-unit>
+      <trans-unit id="bEbXpu2" resname="You have exceeded the maximum size allowed">
+        <source>You have exceeded the maximum size allowed</source>
+        <target>Vous avez dépassé la taille maximale autorisée</target>
+      </trans-unit>
+      <trans-unit id="JdDrpov" resname="Upload an image">
+        <source>Upload an image</source>
+        <target>Téléchargez une image</target>
+      </trans-unit>
+      <trans-unit id="k4KMq00" resname="Art content">
+        <source>Art content</source>
+        <target>Contenu de l'article</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="0VOH7Mb" resname="Slug">
+        <source>Slug</source>
+        <target>Slug</target>
+      </trans-unit>
+      <trans-unit id="fozSBW2" resname="Title">
+        <source>Title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="uLHYlMa" resname="Categories">
+        <source>Categories</source>
+        <target>Catégories</target>
+      </trans-unit>
+      <trans-unit id="nzIGjDo" resname="Key words">
+        <source>Key words</source>
+        <target>Mots clés</target>
+      </trans-unit>
       <trans-unit id="2lTOrMA" resname="Article published successfully">
         <source>Article published successfully</source>
         <target>Article publié avec succès</target>
@@ -56,10 +92,6 @@
       <trans-unit id="sda5G2f" resname="at">
         <source>at</source>
         <target>à</target>
-      </trans-unit>
-      <trans-unit id="uLHYlMa" resname="Categories">
-        <source>Categories</source>
-        <target>Catégories</target>
       </trans-unit>
       <trans-unit id="NV958p1" resname="Comments">
         <source>Comments</source>
@@ -124,6 +156,10 @@
       <trans-unit id="FV_BbAQ" resname="Submit">
         <source>Submit</source>
         <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="1VXNNVq" resname="Categories list">
+        <source>Categories list</source>
+        <target>Liste des catégories</target>
       </trans-unit>
     </body>
   </file>
