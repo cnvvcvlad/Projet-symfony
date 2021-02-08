@@ -117,6 +117,14 @@
         <source>Users</source>
         <target>Utilisateurs</target>
       </trans-unit>
+      <trans-unit id="Zo.RcNI" resname="Add new article">
+        <source>Add new article</source>
+        <target>Ajoutez un nouveau article</target>
+      </trans-unit>
+      <trans-unit id="FV_BbAQ" resname="Submit">
+        <source>Submit</source>
+        <target>Envoyer</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
