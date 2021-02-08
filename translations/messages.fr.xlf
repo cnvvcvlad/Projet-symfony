@@ -165,6 +165,50 @@
         <source>Articles list</source>
         <target>Liste des articles</target>
       </trans-unit>
+      <trans-unit id="OnqBk.y" resname="Users list">
+        <source>Users list</source>
+        <target>Liste des utilisateurs</target>
+      </trans-unit>
+      <trans-unit id="EhVukhv" resname="Id">
+        <source>Id</source>
+        <target>Identifiant</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Mel</target>
+      </trans-unit>
+      <trans-unit id="wlM3BVR" resname="Roles">
+        <source>Roles</source>
+        <target>Rôles</target>
+      </trans-unit>
+      <trans-unit id="sUrHikb" resname="Articles">
+        <source>Articles</source>
+        <target>Articles</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="tRLZfny" resname="User">
+        <source>User</source>
+        <target>Utilisateur</target>
+      </trans-unit>
+      <trans-unit id="k2oWHDk" resname="Editor">
+        <source>Editor</source>
+        <target>Editeur</target>
+      </trans-unit>
+      <trans-unit id="Z0jsi3Z" resname="Moderator">
+        <source>Moderator</source>
+        <target>Moderateur</target>
+      </trans-unit>
+      <trans-unit id="59PnafP" resname="Administrator">
+        <source>Administrator</source>
+        <target>Administrateur</target>
+      </trans-unit>
+      <trans-unit id="8GBm7AI" resname="No registered user">
+        <source>No registered user</source>
+        <target>Aucun utilisateur inscrit</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
