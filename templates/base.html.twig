@@ -42,8 +42,7 @@
                 <a class="nav-link nav-link-nav" href="{{ path('categories') }}">{% trans %}Categories{% endtrans %}</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-                <a class="nav-link nav-link-nav" href="{{ path('actualites_articles') }}">{% trans %}All
-                    articles{% endtrans %}</a>
+                <a class="nav-link nav-link-nav" href="{{ path('actualites_articles') }}">{% trans %}All articles{% endtrans %}</a>
             </li>
 
             {% if is_granted('ROLE_USER') %} {#isConnected in PHP#}
@@ -55,8 +54,7 @@
                 </li>
                 {% if is_granted('ROLE_EDITOR') %}
                     <li class="nav-item d-flex align-items-center">
-                        <a class="nav-link nav-link-nav" href="{{ path('actualites_ajout_article') }}">{% trans %}Create
-                            article{% endtrans %}</a>
+                        <a class="nav-link nav-link-nav" href="{{ path('actualites_ajout_article') }}">{% trans %}Create article{% endtrans %}</a>
                     </li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %} {#isAdmin in PHP#}
