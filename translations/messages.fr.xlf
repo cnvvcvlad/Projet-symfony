@@ -161,6 +161,10 @@
         <source>Categories list</source>
         <target>Liste des catégories</target>
       </trans-unit>
+      <trans-unit id="nYJcIfB" resname="Articles list">
+        <source>Articles list</source>
+        <target>Liste des articles</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
