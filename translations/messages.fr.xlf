@@ -265,14 +265,6 @@
         <source>Register</source>
         <target>S'inscrire</target>
       </trans-unit>
-      <trans-unit id="X61.dc8" resname="Conditions d'utilisation">
-        <source>Conditions d'utilisation</source>
-        <target>Terms of use</target>
-      </trans-unit>
-      <trans-unit id="zOnAobl" resname="Mentions légales">
-        <source>Mentions légales</source>
-        <target>Legal Notice</target>
-      </trans-unit>
       <trans-unit id="n6uDEG1" resname="ChessTeam blog login">
         <source>ChessTeam blog login</source>
         <target>Connexion sur le blog ChessTeam</target>
@@ -288,6 +280,14 @@
       <trans-unit id="v9QCsvb" resname="Sign in">
         <source>Sign in</source>
         <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="jEWkhuS" resname="Terms of use">
+        <source>Terms of use</source>
+        <target>Conditions d'utilisations</target>
+      </trans-unit>
+      <trans-unit id="BY0hgr0" resname="Legal Notice">
+        <source>Legal Notice</source>
+        <target>Mentions légales</target>
       </trans-unit>
     </body>
   </file>
