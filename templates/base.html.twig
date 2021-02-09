@@ -92,7 +92,7 @@
             {% if locale != app.request.locale %}
                 <li class="list-group">
                     <a class="" href="{{ path('change_locale', {'locale' : locale}) }}">
-                        <img class="drapeau" src="{{ asset('img/by_default/'~locale~'.png') }}" alt="{{ locale }}">
+                        <img class="drapeau" src="{{ asset('img/by_default/'~locale~'.png') }}" alt="{{ locale }}" title="{{locale}}">
                     </a>
                 </li>
             {% endif %}

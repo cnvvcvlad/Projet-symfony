@@ -41,6 +41,34 @@
         <source>Key words</source>
         <target>Mots clés</target>
       </trans-unit>
+      <trans-unit id="M.6VzgI" resname="Your email">
+        <source>Your email</source>
+        <target>Votre mel</target>
+      </trans-unit>
+      <trans-unit id="LGsuJTw" resname="Your name">
+        <source>Your name</source>
+        <target>Votre nom</target>
+      </trans-unit>
+      <trans-unit id="egV72Za" resname="Your message">
+        <source>Your message</source>
+        <target>Votre message</target>
+      </trans-unit>
+      <trans-unit id="XPmGFOs" resname="Your login">
+        <source>Your login</source>
+        <target>Votre pseudo</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="t0Bw_Q6" resname="Repeat password">
+        <source>Repeat password</source>
+        <target>Répétez le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="FcMSD5m" resname="I have read and accept terms of the privacy policy">
+        <source>I have read and accept terms of the privacy policy</source>
+        <target>J'ai lu et j'accepte les termes de la politique de confidentialité</target>
+      </trans-unit>
       <trans-unit id="2lTOrMA" resname="Article published successfully">
         <source>Article published successfully</source>
         <target>Article publié avec succès</target>
@@ -208,6 +236,22 @@
       <trans-unit id="8GBm7AI" resname="No registered user">
         <source>No registered user</source>
         <target>Aucun utilisateur inscrit</target>
+      </trans-unit>
+      <trans-unit id="Es7ZirP" resname="ChessTeam blog registration">
+        <source>ChessTeam blog registration</source>
+        <target>Inscription sur le blog ChessTeam</target>
+      </trans-unit>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>S'inscrire</target>
+      </trans-unit>
+      <trans-unit id="X61.dc8" resname="Conditions d'utilisation">
+        <source>Conditions d'utilisation</source>
+        <target>Terms of use</target>
+      </trans-unit>
+      <trans-unit id="zOnAobl" resname="Mentions légales">
+        <source>Mentions légales</source>
+        <target>Legal Notice</target>
       </trans-unit>
     </body>
   </file>
