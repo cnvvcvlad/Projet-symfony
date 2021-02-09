@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription blog ChessTeam{% endblock %}
+{% block title %}{% trans %}ChessTeam blog registration{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Inscrivez-vous !</h1>
+    <h1>{% trans %}ChessTeam blog registration{% endtrans %}</h1>
 
     {{ form_start(registrationForm) }}
     {{ form_row(registrationForm.login) }}
     {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.Password) }}
+    {{ form_row(registrationForm.Password) }}
     {{ form_row(registrationForm.agreeTerms) }}
-    <p><div class="d-flex justify-content-end"><button class="btn btn-lg btn-success">S'inscrire</button></div></p>
-
+    <span>
+        <a href="#" target="_blank" rel="noopener noreferrer">{% trans %}Terms of use{% endtrans %}</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">{% trans %}Legal Notice{% endtrans %}</a>
+    </span>
+    <p><div class="d-flex justify-content-end"><button class="btn btn-lg btn-success">{% trans %}Register{% endtrans %}</button></div></p>
+    
     {{ form_end(registrationForm) }}
 
 {% endblock %}

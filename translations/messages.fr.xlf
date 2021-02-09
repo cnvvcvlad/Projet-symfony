@@ -5,6 +5,90 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
+      <trans-unit id="aWhr3oB" resname="Please download the correct format">
+        <source>Please download the correct format</source>
+        <target>Veuillez télécharger le bon format</target>
+      </trans-unit>
+      <trans-unit id="bEbXpu2" resname="You have exceeded the maximum size allowed">
+        <source>You have exceeded the maximum size allowed</source>
+        <target>Vous avez dépassé la taille maximale autorisée</target>
+      </trans-unit>
+      <trans-unit id="JdDrpov" resname="Upload an image">
+        <source>Upload an image</source>
+        <target>Téléchargez une image</target>
+      </trans-unit>
+      <trans-unit id="k4KMq00" resname="Art content">
+        <source>Art content</source>
+        <target>Contenu de l'article</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="0VOH7Mb" resname="Slug">
+        <source>Slug</source>
+        <target>Slug</target>
+      </trans-unit>
+      <trans-unit id="fozSBW2" resname="Title">
+        <source>Title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="uLHYlMa" resname="Categories">
+        <source>Categories</source>
+        <target>Catégories</target>
+      </trans-unit>
+      <trans-unit id="nzIGjDo" resname="Key words">
+        <source>Key words</source>
+        <target>Mots clés</target>
+      </trans-unit>
+      <trans-unit id="M.6VzgI" resname="Your email">
+        <source>Your email</source>
+        <target>Votre mel</target>
+      </trans-unit>
+      <trans-unit id="LGsuJTw" resname="Your name">
+        <source>Your name</source>
+        <target>Votre nom</target>
+      </trans-unit>
+      <trans-unit id="egV72Za" resname="Your message">
+        <source>Your message</source>
+        <target>Votre message</target>
+      </trans-unit>
+      <trans-unit id="XPmGFOs" resname="Your login">
+        <source>Your login</source>
+        <target>Votre pseudo</target>
+      </trans-unit>
+      <trans-unit id="YXZ26gK" resname="Please enter a password">
+        <source>Please enter a password</source>
+        <target>Veuillez entrer un mot de passe</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="t0Bw_Q6" resname="Repeat password">
+        <source>Repeat password</source>
+        <target>Répétez le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="et36PF3" resname="Password does not match">
+        <source>Password does not match</source>
+        <target>Le mot de passe ne correspond pas</target>
+      </trans-unit>
+      <trans-unit id=".esazsm" resname="Your password should be at least {{ limit }} characters">
+        <source>Your password should be at least {{ limit }} characters</source>
+        <target>Votre mot de passe doit comporter au moins {{limit}} caractères</target>
+      </trans-unit>
+      <trans-unit id="wB0OBR." resname="You should agree to our terms">
+        <source>You should agree to our terms</source>
+        <target>Vous devez accepter nos conditions</target>
+      </trans-unit>
+      <trans-unit id="FcMSD5m" resname="I have read and accept terms of the privacy policy">
+        <source>I have read and accept terms of the privacy policy</source>
+        <target>J'ai lu et j'accepte les termes de la politique de confidentialité</target>
+      </trans-unit>
+      <trans-unit id="_XjLSu_" resname="Activate your account">
+        <source>Activate your account</source>
+        <target>Activation de votre compte</target>
+      </trans-unit>
       <trans-unit id="2lTOrMA" resname="Article published successfully">
         <source>Article published successfully</source>
         <target>Article publié avec succès</target>
@@ -56,10 +140,6 @@
       <trans-unit id="sda5G2f" resname="at">
         <source>at</source>
         <target>à</target>
-      </trans-unit>
-      <trans-unit id="uLHYlMa" resname="Categories">
-        <source>Categories</source>
-        <target>Catégories</target>
       </trans-unit>
       <trans-unit id="NV958p1" resname="Comments">
         <source>Comments</source>
@@ -116,6 +196,98 @@
       <trans-unit id="awzJBNC" resname="Users">
         <source>Users</source>
         <target>Utilisateurs</target>
+      </trans-unit>
+      <trans-unit id="Zo.RcNI" resname="Add new article">
+        <source>Add new article</source>
+        <target>Ajoutez un nouveau article</target>
+      </trans-unit>
+      <trans-unit id="FV_BbAQ" resname="Submit">
+        <source>Submit</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="1VXNNVq" resname="Categories list">
+        <source>Categories list</source>
+        <target>Liste des catégories</target>
+      </trans-unit>
+      <trans-unit id="nYJcIfB" resname="Articles list">
+        <source>Articles list</source>
+        <target>Liste des articles</target>
+      </trans-unit>
+      <trans-unit id="OnqBk.y" resname="Users list">
+        <source>Users list</source>
+        <target>Liste des utilisateurs</target>
+      </trans-unit>
+      <trans-unit id="EhVukhv" resname="Id">
+        <source>Id</source>
+        <target>Identifiant</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Mel</target>
+      </trans-unit>
+      <trans-unit id="wlM3BVR" resname="Roles">
+        <source>Roles</source>
+        <target>Rôles</target>
+      </trans-unit>
+      <trans-unit id="sUrHikb" resname="Articles">
+        <source>Articles</source>
+        <target>Articles</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="tRLZfny" resname="User">
+        <source>User</source>
+        <target>Utilisateur</target>
+      </trans-unit>
+      <trans-unit id="k2oWHDk" resname="Editor">
+        <source>Editor</source>
+        <target>Editeur</target>
+      </trans-unit>
+      <trans-unit id="Z0jsi3Z" resname="Moderator">
+        <source>Moderator</source>
+        <target>Moderateur</target>
+      </trans-unit>
+      <trans-unit id="59PnafP" resname="Administrator">
+        <source>Administrator</source>
+        <target>Administrateur</target>
+      </trans-unit>
+      <trans-unit id="8GBm7AI" resname="No registered user">
+        <source>No registered user</source>
+        <target>Aucun utilisateur inscrit</target>
+      </trans-unit>
+      <trans-unit id="Es7ZirP" resname="ChessTeam blog registration">
+        <source>ChessTeam blog registration</source>
+        <target>Inscription sur le blog ChessTeam</target>
+      </trans-unit>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>S'inscrire</target>
+      </trans-unit>
+      <trans-unit id="n6uDEG1" resname="ChessTeam blog login">
+        <source>ChessTeam blog login</source>
+        <target>Connexion sur le blog ChessTeam</target>
+      </trans-unit>
+      <trans-unit id="wzmr1yx" resname="Forgot your password ?">
+        <source>Forgot your password ?</source>
+        <target>Mot de passe oublié ?</target>
+      </trans-unit>
+      <trans-unit id="_TJnqhH" resname="Remember me">
+        <source>Remember me</source>
+        <target>Se souvenir de moi</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="jEWkhuS" resname="Terms of use">
+        <source>Terms of use</source>
+        <target>Conditions d'utilisations</target>
+      </trans-unit>
+      <trans-unit id="BY0hgr0" resname="Legal Notice">
+        <source>Legal Notice</source>
+        <target>Mentions légales</target>
       </trans-unit>
     </body>
   </file>

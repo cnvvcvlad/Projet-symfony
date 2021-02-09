@@ -21,13 +21,13 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('login', TextType::class, [
-                'label' => 'Votre pseudo',
+                'label' => 'Your login',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
             ->add('email',EmailType::class,[
-                'label' => 'Votre email',
+                'label' => 'Your email',
                 'attr' => [
                     'class' => 'form-control'
                 ]
@@ -36,11 +36,11 @@ class RegistrationFormType extends AbstractType
                 'attr' => [
                     'class' => 'form-group form-check'
                 ],
-                'label' => 'J\'accepte la collecte de mes données',
+                'label' => 'I have read and accept terms of the privacy policy',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'You should agree to our terms',
                     ]),
                 ],
 
@@ -49,11 +49,11 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'type' => PasswordType::class,
-                'invalid_message' => 'Le mot de passe ne correspond pas',
+                'invalid_message' => 'Password does not match',
                 'options' => ['attr' => ['class' => 'form-control']],
                 'required' => true,
-                'first_options' => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Répéter le mot de passe'],
+                'first_options' => ['label' => 'Password'],
+                'second_options' => ['label' => 'Repeat password'],
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
@@ -66,7 +66,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-//                'label' => 'Mot de passe',
+//                'label' => 'Password',
                 'attr' => [
                     'class' => 'form-control'
                 ],

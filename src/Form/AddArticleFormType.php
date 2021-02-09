@@ -24,6 +24,7 @@ class AddArticleFormType extends AbstractType
         $builder
             ->add('categories', EntityType::class, [
                 'class' => Categories::class,
+                'label' => 'Categories',
                 'multiple' => true,
                 'expanded' => true,
                 'attr' => [
@@ -34,7 +35,7 @@ class AddArticleFormType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'Titre'
+                'label' => 'Title'
             ])
             ->add('art_slug', TextType::class, [
                 'attr' => [
@@ -52,10 +53,11 @@ class AddArticleFormType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'Contenu de l\'article'
+                'label' => 'Art content'
             ])
             ->add('mots_cles', EntityType::class, [
                 'class' => MotsCles::class,
+                'label' => 'Key words',
                 'multiple' => true,
                 'expanded' => true,
                 'attr' => [
@@ -65,22 +67,21 @@ class AddArticleFormType extends AbstractType
             ->add('art_image', FileType::class, [
                 'attr' => [
                     'class' => 'form-control'
-
                 ],
                 // make it optional so you don't have to re-upload the file
                 // every time you edit the Article details
                 'required' => false,
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
-                'label' => 'Téléchargez une image',
+                'label' => 'Upload an image',
                 'constraints' => [
                     new File([
                         'maxSize' => '2048k',
                         'mimeTypes' => [
                             'image/jpeg', 'image/jpg', 'image/png'
                         ],
-                        'mimeTypesMessage' => 'Veuillez télécharger le bon format',
-                        'maxSizeMessage' => 'Vous avez dépassé la taille maximale autorisée'
+                        'mimeTypesMessage' => 'Please download the correct format',
+                        'maxSizeMessage' => 'You have exceeded the maximum size allowed '
                     ])
                 ]
             ])

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion blog ChessTeam{% endblock %}
+{% block title %}{% trans %}ChessTeam blog login{% endtrans %}{% endblock %}
 
 {% block body %}
-    {#On g�re les messages flashes#}
+    {#On gère les messages flashes#}
     {% for message in app.flashes('message')%}
         <div class="alert alert-success" role="alert">
             {{ message }}
@@ -32,12 +32,12 @@
             </div>
         {% endif %}
 
-        <h1>Connectez - vous</h1>
-        <h6><a href="{{ path('app_forgotten_password') }}">Mot de passe oublié ?</a> </h6>
-        <label for="inputEmail">Email</label>
+        <h1>{% trans %}Sign in{% endtrans %}</h1>
+        <h6><a href="{{ path('app_forgotten_password') }}">{% trans %}Forgot your password ?{% endtrans %}</a> </h6>
+        <label for="inputEmail">{% trans %}Email{% endtrans %}</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required
                autofocus>
-        <label for="inputPassword">Password</label>
+        <label for="inputPassword">{% trans %}Password{% endtrans %}</label>
         <input type="password" name="password" id="inputPassword" class="form-control" required>
 
         <input type="hidden" name="_csrf_token"
@@ -50,10 +50,8 @@
 
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" name="_remember_me">
-            <label class="form-check-label">Se souvenir de moi</label>
+            <label class="form-check-label">{% trans %}Remember me{% endtrans %}</label>
         </div>
-        <p><div class="d-flex justify-content-end"><button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button></div></p>
+        <p><div class="d-flex justify-content-end"><button class="btn btn-lg btn-primary" type="submit">{% trans %}Sign in{% endtrans %}</button></div></p>
     </form>
 {% endblock %}
