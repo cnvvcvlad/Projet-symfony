@@ -19,6 +19,7 @@ class ResetPassType extends AbstractType
                 ]
             ])
             ->add('envoyer', SubmitType::class, [
+                'label' => 'Submit',
                 'attr' => [
                     'class' => 'btn btn-success'
                 ]
