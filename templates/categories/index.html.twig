@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des catégories{% endblock %}
+{% block title %}{% trans %}Categories list{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Liste des catégories</h1>
+    <h1>{% trans %}Categories list{% endtrans %}</h1>
 
     {#{{ dump(categories) }}#}
     {% for category in categories %}

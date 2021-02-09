@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un article{% endblock %}
+{% block title %}{% trans %}Add new article{% endtrans %}{% endblock %}
 
 
 
 {% block body %}
-    <h1>Ajoutez un nouveau article</h1>
+    <h1>{% trans %}Add new article{% endtrans %}</h1>
 
     {{ form_start(articleForm) }}
     {{ form_row(articleForm.categories) }}
@@ -17,7 +17,7 @@
     {{ form_row(articleForm.art_image) }}
 
 
-    <p><div class="d-flex justify-content-end"><button class="btn btn-lg btn-success">Ajouter</button></div></p>
+    <p><div class="d-flex justify-content-end"><button class="btn btn-lg btn-success">{% trans %}Submit{% endtrans %}</button></div></p>
 
     {{ form_end(articleForm) }}
 

@@ -53,7 +53,7 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
             // on crée un message
-            $message = (new \Swift_Message('Activation de votre compte'))
+            $message = (new \Swift_Message('Activate your account'))
                 // on attribue l'expediteur, l'addrese specifique de notre site
                 ->setFrom('cnvvc_vlad@yahoo.fr')
                 // on attribue le destinataire

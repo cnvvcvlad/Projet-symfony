@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}{% trans %}Contact us{% endtrans %}{% endblock %}
 
 {% block body %}
 
@@ -10,7 +10,7 @@
         </div>
     {% endfor %}
 
-    <h1>Nous contacter</h1>
+    <h1>{% trans %}Contact us{% endtrans %}</h1>
     {#{{ form(contactForm) }}#}
 
     {{ form_start(contactForm) }}

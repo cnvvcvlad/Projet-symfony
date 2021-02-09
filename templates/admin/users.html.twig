@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des utilisateurs{% endblock %}
+{% block title %}{% trans %}Users list{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Liste des utilisateurs</h1>
+    <h1>{% trans %}Users list{% endtrans %}</h1>
     <table>
         <thead>
-        <th>ID</th>
-        <th>Email</th>
-        <th>Rôles</th>
-        <th>Articles</th>
-        <th>Actions</th>
+        <th>{% trans %}Id{% endtrans %}</th>
+        <th>{% trans %}Email{% endtrans %}</th>
+        <th>{% trans %}Roles{% endtrans %}</th>
+        <th>{% trans %}Articles{% endtrans %}</th>
+        <th>{% trans %}Actions{% endtrans %}</th>
         </thead>
         <tbody>
         {# On boucle sur les utilisateurs #}
@@ -22,13 +22,13 @@
                     {# On boucle sur les rôles #}
                     {% for role in user.roles %}
                         {% if role == "ROLE_USER" %}
-                            Utilisateur
+                            {% trans %}User{% endtrans %}
                         {% elseif role == "ROLE_EDITOR" %}
-                            Editeur
+                            {% trans %}Editor{% endtrans %}
                         {% elseif role == "ROLE_MODERATOR" %}
-                            Modérateur
+                            {% trans %}Moderator{% endtrans %}
                         {% elseif role == "ROLE_ADMIN" %}
-                            Administrateur
+                            {% trans %}Administrator{% endtrans %}
                         {% endif %}
                     {% endfor %}
                 </td>
@@ -37,7 +37,7 @@
             </tr>
 
         {% else %}
-            <p>Aucun utilisateur inscrit</p>
+            <p>{% trans %}No registered user{% endtrans %}</p>
         {% endfor %}
         </tbody>
     </table>
