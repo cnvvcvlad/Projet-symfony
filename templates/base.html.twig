@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="{{ asset('css/normalize.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}" type="text/css">
+
 
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('build/app.js') }}"></script>
 
     <script src="https://kit.fontawesome.com/a864bb51bb.js" crossorigin="anonymous"></script>
 
@@ -22,161 +25,167 @@
 </head>
 
 <body>
-<div class=" jumbotron d-flex justify-content-around ">
-    <div class=" card d-flex justify-content-center">
-        <a href="{{ path('accueil') }}"><img src="{{ asset('img/logo/logo.png') }}" class="card-img-top"
-                                             alt="Le logo de ChessTeam" title="Logo"></a>
-    </div>
-    <div class="navigation d-flex">
-    <div id="menu-bar" class="d-flex">
-        <div id="menu" onclick="onClickMenu()">
-            <div id="bar1" class="bar"></div>
-            <div id="bar2" class="bar"></div>
-            <div id="bar3" class="bar"></div>
+    <div class=" jumbotron d-flex justify-content-around ">
+        <div class=" card d-flex justify-content-center">
+            <a href="{{ path('accueil') }}"><img src="{{ asset('img/logo/logo.png') }}" class="card-img-top"
+                    alt="Le logo de ChessTeam" title="Logo"></a>
         </div>
-        <ul class="navigate nav nav-pills nav-fill d-flex justify-content-arround" id="navigate">
-            <li class="nav-item d-flex align-items-center">
-                <a class="nav-item nav-link active" href="{{ path('accueil') }}">{% trans %}Home{% endtrans %}</a>
-            </li>
-            <li class="nav-item d-flex align-items-center">
-                <a class="nav-link nav-link-nav" href="{{ path('categories') }}">{% trans %}Categories{% endtrans %}</a>
-            </li>
-            <li class="nav-item d-flex align-items-center">
-                <a class="nav-link nav-link-nav" href="{{ path('actualites_articles') }}">{% trans %}All articles{% endtrans %}</a>
-            </li>
+        <div class="navigation d-flex">
+            <div id="menu-bar" class="d-flex">
+                <div id="menu" onclick="onClickMenu()">
+                    <div id="bar1" class="bar"></div>
+                    <div id="bar2" class="bar"></div>
+                    <div id="bar3" class="bar"></div>
+                </div>
+                <ul class="navigate nav nav-pills nav-fill d-flex justify-content-arround" id="navigate">
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-item nav-link active" href="{{ path('accueil') }}">{% trans %}Home{% endtrans
+                            %}</a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link nav-link-nav" href="{{ path('categories') }}">{% trans %}Categories{%
+                            endtrans %}</a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link nav-link-nav" href="{{ path('actualites_articles') }}">{% trans %}All
+                            articles{% endtrans %}</a>
+                    </li>
 
-            {% if is_granted('ROLE_USER') %} {#isConnected in PHP#}
-                <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link nav-link-nav" href="#">{% trans %}Profile{% endtrans %}</a>
-                </li>
-                <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link nav-link-nav" href="#">{% trans %}My articles{% endtrans %}</a>
-                </li>
-                {% if is_granted('ROLE_EDITOR') %}
+                    {% if is_granted('ROLE_USER') %} {#isConnected in PHP#}
                     <li class="nav-item d-flex align-items-center">
-                        <a class="nav-link nav-link-nav" href="{{ path('actualites_ajout_article') }}">{% trans %}Create article{% endtrans %}</a>
+                        <a class="nav-link nav-link-nav" href="#">{% trans %}Profile{% endtrans %}</a>
                     </li>
-                {% endif %}
-                {% if is_granted('ROLE_ADMIN') %} {#isAdmin in PHP#}
                     <li class="nav-item d-flex align-items-center">
-                        <a class="nav-link nav-link-nav"
-                           href="{{ path('admin_utilisateurs') }}">{% trans %}Users{% endtrans %}</a>
+                        <a class="nav-link nav-link-nav" href="#">{% trans %}My articles{% endtrans %}</a>
                     </li>
-                {% endif %}
-                <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link nav-link-nav" href="{{ path('app_logout') }}">{% trans %}Logout{% endtrans %}</a>
-                </li>
-            {% else %}
-                <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link nav-link-nav" href="{{ path('app_login') }}">{% trans %}Log in{% endtrans %}</a>
-                </li>
-                <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link nav-link-nav"
-                       href="{{ path('app_register') }}">{% trans %}Registration{% endtrans %}</a>
-                </li>
-            {% endif %}
-            <li class="nav-item d-flex align-items-center">
-                <a class="nav-link nav-link-nav" href="{{ path('contact') }}">{% trans %}Contact us{% endtrans %}</a>
-            </li>
-        </ul>
-    </div>
-    </div>
-    <div class="d-flex">
-        <a href="{{ asset('img/logo/pawn_logo.jpg') }}" class="d-flex align-items-center"><img
-                    src="{{ asset('img/logo/pawn_logo.jpg') }}" class="card-img" alt=""
-                    title=""></a>
-    </div>
-    <ul class="nav d-flex align-items-center">
-        {% for locale in locales %}
+                    {% if is_granted('ROLE_EDITOR') %}
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link nav-link-nav" href="{{ path('actualites_ajout_article') }}">{% trans %}Create
+                            article{% endtrans %}</a>
+                    </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %} {#isAdmin in PHP#}
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link nav-link-nav" href="{{ path('admin_utilisateurs') }}">{% trans %}Users{%
+                            endtrans %}</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link nav-link-nav" href="{{ path('app_logout') }}">{% trans %}Logout{% endtrans
+                            %}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link nav-link-nav" href="{{ path('app_login') }}">{% trans %}Log in{% endtrans
+                            %}</a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link nav-link-nav" href="{{ path('app_register') }}">{% trans %}Registration{%
+                            endtrans %}</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link nav-link-nav" href="{{ path('contact') }}">{% trans %}Contact us{% endtrans
+                            %}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex">
+            <a href="{{ asset('img/logo/pawn_logo.jpg') }}" class="d-flex align-items-center"><img
+                    src="{{ asset('img/logo/pawn_logo.jpg') }}" class="card-img" alt="" title=""></a>
+        </div>
+        <ul class="nav d-flex align-items-center">
+            {% for locale in locales %}
             {#on affiche tous les locales sauf celle qui est active#}
             {% if locale != app.request.locale %}
-                <li class="list-group">
-                    <a class="" href="{{ path('change_locale', {'locale' : locale}) }}">
-                        <img class="drapeau" src="{{ asset('img/by_default/'~locale~'.png') }}" alt="{{ locale }}" title="{{locale}}">
-                    </a>
-                </li>
+            <li class="list-group">
+                <a class="" href="{{ path('change_locale', {'locale' : locale}) }}">
+                    <img class="drapeau" src="{{ asset('img/by_default/'~locale~'.png') }}" alt="{{ locale }}">
+                </a>
+            </li>
             {% endif %}
-        {% endfor %}
+            {% endfor %}
 
-    </ul>
-    {#{{ dump(locales) }}#}
-</div>
-<div id="menu-bg" class="menu-bg"></div>
-<div class="banniere">
-    <h1 class="test">Bonjour, je vous rappelle que le site est en phase de test</h1>
+        </ul>
+        {#{{ dump(locales) }}#}
+    </div>
+    <div id="menu-bg" class="menu-bg"></div>
+    <div class="banniere">
+        <h1 class="test">Bonjour, je vous rappelle que le site est en phase de test</h1>
 
-    <p class="d-flex justify-content-center">sssss@dd.ds/aaaaaaaaaa</p>
-</div>
-{% for message in app.flashes('message') %}
+        <p class="d-flex justify-content-center">sssss@dd.ds/aaaaaaaaaa</p>
+    </div>
+    {% for message in app.flashes('message') %}
     <div class="alert alert-success">
         {{ message }}
     </div>
-{% endfor %}
+    {% endfor %}
 
-{# Le block body sera dans un container bootstrap #}
-<div class="container d-flex flex-column">
-    {% block body %}{% endblock %}
-</div>
-<footer class="">
-    <div class="pied-page">
-        <div class="middle">
-            <ul class="menu">
-                <li class="item" id="profile">
-                    <a class="btn" href="#profile">Notre adresse</a>
+    {# Le block body sera dans un container bootstrap #}
+    <div class="container d-flex flex-column">
+        {% block body %}{% endblock %}
+    </div>
+    <footer class="">
+        <div class="pied-page">
+            <div class="middle">
+                <ul class="menu">
+                    <li class="item" id="profile">
+                        <a class="btn" href="#profile">Notre adresse</a>
 
-                    <div class="smenu">
-                        <h5>15 rue Général Faidherbe</h5>
-                        <h5>94130 Nogent sur Marne</h5>
-                        <h5>0783554817</h5>
-                        <h5>cnvvc_vlad@yahoo.fr</h5>
-                    </div>
-                </li>
-                <li class="item" id="message">
-                    <a class="btn" href="#message">Réseaux Sociaux</a>
+                        <div class="smenu">
+                            <h5>15 rue Général Faidherbe</h5>
+                            <h5>94130 Nogent sur Marne</h5>
+                            <h5>0783554817</h5>
+                            <h5>cnvvc_vlad@yahoo.fr</h5>
+                        </div>
+                    </li>
+                    <li class="item" id="message">
+                        <a class="btn" href="#message">Réseaux Sociaux</a>
 
-                    <div class="smenu">
-                        <a href="">Facebook<span class=""> <i class="fab fa-facebook"></i></span> </a>
-                        <a href="">Twitter<span class=""> <i class="fab fa-twitter"></i></span> </a>
-                        <a href="">Whatsapp<span class=""> <i class="fab fa-whatsapp"></i></span> </a>
-                    </div>
-                </li>
-                <li class="item" id="settings">
-                    <a class="btn" href="#settings">FAQ/CGU</a>
+                        <div class="smenu">
+                            <a href="">Facebook<span class=""> <i class="fab fa-facebook"></i></span> </a>
+                            <a href="">Twitter<span class=""> <i class="fab fa-twitter"></i></span> </a>
+                            <a href="">Whatsapp<span class=""> <i class="fab fa-whatsapp"></i></span> </a>
+                        </div>
+                    </li>
+                    <li class="item" id="settings">
+                        <a class="btn" href="#settings">FAQ/CGU</a>
 
-                    <div class="smenu">
-                        <a href="{{ path('questions') }}">Questions fréquentes</a>
-                        <a href="{{ path('conditions') }}">Conditions d'utilisations</a>
-                        <a href="{{ path('mentions_legales') }}">Mentions légales</a>
-                    </div>
-                </li>
+                        <div class="smenu">
+                            <a href="{{ path('questions') }}">Questions fréquentes</a>
+                            <a href="{{ path('conditions') }}">Conditions d'utilisations</a>
+                            <a href="{{ path('mentions_legales') }}">Mentions légales</a>
+                        </div>
+                    </li>
 
-                {% if app.user %}
+                    {% if app.user %}
                     <li class="item">
                         <a class="btn" href="{{ path('app_logout') }}">Deconnexion</a>
                     </li>
 
-                {% else %}
+                    {% else %}
                     <li class="item">
                         <a class="btn" target="_blank" href="https://chess.com">Chess.com</a>
                     </li>
-                {% endif %}
+                    {% endif %}
 
 
-            </ul>
+                </ul>
 
+            </div>
         </div>
-    </div>
-    <div class="copyright d-flex justify-content-center">
-        <p>&copy; Copyright 2020 </p>
-    </div>
+        <div class="copyright d-flex justify-content-center">
+            <p>&copy; Copyright 2020 </p>
+        </div>
 
-</footer>
-{% block javascripts %}
+    </footer>
+    {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- // <script src="https://kit.fontawesome.com/a864bb51bb.js" crossorigin="anonymous"></script> -->
-{% endblock %}
+    {% endblock %}
 </body>
 
 </html>
