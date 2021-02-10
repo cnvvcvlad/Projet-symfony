@@ -8,17 +8,16 @@
 
     <title>{% block title %}{{ title }}{% endblock %}</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/burger.css') }}" type="text/css">
+    {# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> #}
+    {# <link rel="stylesheet" href="{{ asset('css/normalize.css') }}" type="text/css"> #}
+    {# <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css"> #}
+    {# <link rel="stylesheet" href="{{ asset('css/burger.css') }}" type="text/css"> #}
     <link rel="stylesheet" href="{{ asset('build/app.css') }}" type="text/css">
 
 
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('build/app.js') }}"></script>
-
-    <script src="https://kit.fontawesome.com/a864bb51bb.js" crossorigin="anonymous"></script>
+    {# <script src="{{ asset('js/script.js') }}"></script> #}
+    {# <script src="{{ asset('build/app.js') }}"></script> #}
+    {# <script src="https://kit.fontawesome.com/a864bb51bb.js" crossorigin="anonymous"></script> #}
 
 
     {% block stylesheets %}{% endblock %}
@@ -47,8 +46,7 @@
                             endtrans %}</a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
-                        <a class="nav-link nav-link-nav" href="{{ path('actualites_articles') }}">{% trans %}All
-                            articles{% endtrans %}</a>
+                        <a class="nav-link nav-link-nav" href="{{ path('actualites_articles') }}">{% trans %}All articles{% endtrans %}</a>
                     </li>
 
                     {% if is_granted('ROLE_USER') %} {#isConnected in PHP#}
@@ -184,7 +182,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- // <script src="https://kit.fontawesome.com/a864bb51bb.js" crossorigin="anonymous"></script> -->
+
+    <script src="https://kit.fontawesome.com/a864bb51bb.js" crossorigin="anonymous"></script>
+    {# <script src="{{ asset('js/script.js') }}"></script> #}
+    <script src="{{ asset('./build/app.js') }}"></script>
+    
     {% endblock %}
 </body>
 
