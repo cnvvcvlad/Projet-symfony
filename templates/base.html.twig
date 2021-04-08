@@ -16,19 +16,27 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css"> #}
     {#
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}" type="text/css"> #}
-    <link rel="stylesheet" href="{{ asset('assets/scss/app.css') }}" type="text/css">
+    {#
+    <link rel="stylesheet" href="{{ asset('assets/scss/app.scss') }}" type="text/css">#}
     <link rel="icon" href="data:;base64,iVBORwOKGO=" />
 
 
     {#
     <script src="{{ asset('js/script.js') }}"></script> #}
+    {#
     <script src="{{ asset('assets/js/burger.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/js/app.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/app.js') }}" type="text/javascript"></script>#}
 
     <script src="https://kit.fontawesome.com/a864bb51bb.js" crossorigin="anonymous"></script>
 
 
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+    {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+    {{ encore_entry_link_tags('app') }}
+
+    <!-- Renders a link tag (if your module requires any CSS)
+    <link rel="stylesheet" href="/build/app.css"> -->
+    {% endblock %}
 </head>
 
 <body>
@@ -188,9 +196,17 @@
 
     </footer>
     {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+
+
+    {{ encore_entry_script_tags('app', 'burger') }}
+
+    <!-- Renders app.js & a webpack runtime.js file
+    <script src="/build/runtime.js" defer></script>
+    <script src="/build/app.js" defer></script>
+    See note below about the "defer" attribute -->
 
     {#
     <script src="https://kit.fontawesome.com/a864bb51bb.js" crossorigin="anonymous"></script> #}
