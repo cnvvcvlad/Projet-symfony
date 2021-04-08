@@ -1,10 +1,9 @@
 //import your files here
 // @import "../../node_modules/bootstrap/scss/bootstrap";
 
+@import "./utils/variables";
+@import "./utils/functions";
+@import "./utils/mixins";
 
-
-
-body {
-    opacity: 1;
-
-}
+@import "./base/normalize";
+@import "./layouts/form";
